@@ -1,6 +1,5 @@
 <?php
 	
-	include("checkall.php");
-	
+	echo 'test';
 
 ?>
