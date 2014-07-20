@@ -1,18 +1,16 @@
 <?php
 
 	function check_path($path){
-		$path_get = get_path_include($path);
-		print_r($path_get);
-		if($path_get=='index.php'){
-			//go_path('');
+		$path_get = get_path_file($path);
+		if($path_get=="" || $path_get=='/'){
+			include('home.php');
 		}
-		elseif($path_get=='content'){
-			//go_include_path('show_topic.php');
+		else if($path_get=="content"){
+			include('content/show_topic.php');
 		}
-		else{
-			not_found();
+		else if($path_get=='404'){
+			include('errormessages/404.php');
 		}
-
 	}
 
 	function get_path(){
@@ -30,7 +28,7 @@
 		$newpath = array();
 		$n = 0;
 		foreach ($pathexe as $key => $value) {
-			if($value!='' && $value!='webboyis'){
+			if($value!=''){
 				$newpath[$n++] = $value;
 			}
 		}
