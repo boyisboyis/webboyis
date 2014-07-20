@@ -14,6 +14,8 @@
 
 	function style_header(){
 		$str = "<div id='header-wrap'>";
+		$str .= "<div id='h-box'>";
+		$str .= "</div>";
 		$str .= "</div>";
 		return $str;
 	}

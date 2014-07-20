@@ -8,6 +8,10 @@
 		else if($path_get=="content"){
 			include('content/show_topic.php');
 		}
+		else if($path_get=='adminauto'){
+			//include('administrator/view.php');
+			go_path('administrator/view.php');
+		}
 		else if($path_get=='404'){
 			include('errormessages/404.php');
 		}

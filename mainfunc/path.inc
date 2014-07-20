@@ -17,6 +17,9 @@
 			if($path[0]=='content'){
 				return "content";
 			}
+			else if($path[0]=='adminwebboyis'){
+				return "adminauto";
+			}
 		}
 		return "404";
 	}

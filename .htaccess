@@ -4,6 +4,11 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.+) - [PT,L]
 
+
 RewriteRule ^(.*) index.php
 
+Options -Indexes
+
+
+ErrorDocument 403 index.php
 ErrorDocument 404 /errormessages/404.php
