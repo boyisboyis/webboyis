@@ -1,9 +1,9 @@
 <?php
 	
-	include("etc.inc");
-	include("html.inc");
-	include("webstyle.inc");
-	include("path.inc");
-	include("checkpath.inc");
+	require_once("etc.inc");
+	require_once("html.inc");
+	require_once("webstyle.inc");
+	require_once("path.inc");
+	require_once("checkpath.inc");
 
 ?>

@@ -2,7 +2,8 @@
 	
 	function admin_style_head_tag($type_admin=1){ // 1 is login already, 0 is no login
 		$str = "<head>";
-		$str .= link_style("http://localhost/administrator/css/admin_main.css");
+		$str .= admin_meta_tags();
+		$str .= link_style("/administrator/css/admin_main.css");
 		$str .= "</head>";
 		return $str;
 	}
@@ -39,6 +40,17 @@
 	function admin_login_style(){
 		$str = "<div>";
 		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_meta_tags(){
+		$str = "";
+		$str .= meta_tags(
+			array(
+				"name" => "viewport",
+				"content" => "'width=device-width, initial-scale=1, maximum-scale=1'"
+			)
+		);
 		return $str;
 	}
 

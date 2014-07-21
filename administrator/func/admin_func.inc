@@ -4,4 +4,8 @@
 		
 	}
 
+	function admin_only_computer(){
+
+	}
+
 ?>

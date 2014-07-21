@@ -8,4 +8,19 @@
 		return "<input id=".$name." type='hidden' name=".$name." value=".$value.">";
 	}
 
+	function meta_tags($array=array()){
+		if(!empty($array)){
+			return "<meta ".create_tags($array)." >";
+		}
+		return "";
+	}
+
+	function create_tags($array){
+		$str = "";
+		foreach ($array as $key => $value) {
+			$str .= $key." = ".$value." ";
+		}
+		return $str;
+	}
+
 ?>
