@@ -18,12 +18,17 @@
 
 	function admin_style_header(){
 		$str = "<div id='wrap-admin-header'>";
+		$str .= "<div class='ah-w'>";
+		$str .= "</div>";
 		$str .= "</div>";
 		return $str;
 	}
 
 	function admin_style_footer(){
 		$str = "<div id='wrap-admin-footer'>";
+		$str .= "<div class='af-w'>";
+		$str .= "Webadmin created by ".user_create().", contact me <a href='mailto:".user_create('email')."'>".user_create('email')."</a>";
+		$str .= "</div>";
 		$str .= "</div>";
 		return $str;
 	}
@@ -38,7 +43,14 @@
 	}
 
 	function admin_login_style(){
-		$str = "<div>";
+		$str = "<div class='al-w'>";
+		$str .= "<div id='admin-login-content'>";
+		$str .= "<div class='al-t'>";
+		$str .= "<p>Login</p>";
+		$str .= "</div>";
+		$str .= "<div class='al-c'>";
+		$str .= "</div>";
+		$str .= "</div>";
 		$str .= "</div>";
 		return $str;
 	}

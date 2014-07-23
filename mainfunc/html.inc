@@ -23,4 +23,14 @@
 		return $str;
 	}
 
+	function char_entities($char=""){
+		$char_entities = array(
+			"copyright" => "&copy;", // ©
+			"registrade" => "&reg;"  //®
+		);
+		if($char!=''){ 
+			return $char_entities[$char];
+		}
+	}
+
 ?>

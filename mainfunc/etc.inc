@@ -37,4 +37,13 @@ function get_device(){
 	return $device;
 }
 
+function user_create($type='name'){
+	if($type=='name'){
+		return "Supagrid Tangsermsit";
+	}
+	else if($type=='email'){
+		return "boyisboyis261129@gmail.com";
+	}	
+}
+
 ?>
