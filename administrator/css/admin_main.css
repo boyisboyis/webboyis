@@ -1,3 +1,8 @@
+@font-face{
+	font-family: cartoon;
+	src:url(../font/Comic_White_Rabbit_.otf);
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -33,10 +38,70 @@ a{
 	border-radius: 10px;
 }
 
+.al-t {
+	position: relative;
+	background: #3FC380;
+	border: 4px solid #bfe7f5;
+	width: 50%;
+	margin: 0 auto;
+	border-radius: 15px;
+}
+.al-t p{
+	text-align: center;
+	padding: 20px;
+	font-size: 30px;
+	color:#FFFFFF;
+}
+.al-t:after, .al-t:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.al-t:after {
+	border-color: rgba(63, 195, 128, 0);
+	border-top-color: #3FC380;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.al-t:before {
+	border-color: rgba(191, 231, 245, 0);
+	border-top-color: #bfe7f5;
+	border-width: 36px;
+	margin-left: -36px;
+}
+
 #admin-login-content{
 	width: 600px;
 	margin: 0 auto;
 	padding: 20px 0;
+}
+
+.al-c{
+	margin: 35px;
+	width: 482px;
+	border-top: 4px solid #bfe7f5;
+	border-left: 4px solid #bfe7f5;
+	border-right: 4px solid #bfe7f5;
+	padding: 20px;
+}
+
+#submit-form{
+	width: 530px;
+	height: 50px;
+	background: gray;
+	margin: 0 auto;
+}
+
+.input_style{
+	width: 100%;
+	height: 50px;
+	font-size: 30px;
 }
 
 #wrap-admin-footer{

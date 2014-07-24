@@ -33,4 +33,8 @@
 		}
 	}
 
+	function clear_both(){
+		return "<div style='clear:both'></div>";
+	}
+
 ?>

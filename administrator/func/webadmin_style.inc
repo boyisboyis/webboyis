@@ -46,9 +46,16 @@
 		$str = "<div class='al-w'>";
 		$str .= "<div id='admin-login-content'>";
 		$str .= "<div class='al-t'>";
-		$str .= "<p>Login</p>";
+		$str .= "<p>LOGIN</p>";
 		$str .= "</div>";
 		$str .= "<div class='al-c'>";
+		$str .= "<div id='login-form'>";
+		$str .= "<input type='input' name='username' class='input_style' placeholder='Username'>";
+		$str .= "<div style='margin-top:10px;'></div>";
+		$str .= "<input type='password' name='password' class='input_style' placeholder='Password'>";
+		$str .= "</div>";
+		$str .= "</div>";
+		$str .= "<div id='submit-form'>";
 		$str .= "</div>";
 		$str .= "</div>";
 		$str .= "</div>";
