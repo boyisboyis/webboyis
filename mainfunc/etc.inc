@@ -3,8 +3,8 @@
 session_start();
 
 function set_global_path(){
-	$GLOBALS['basepath'] = $_SERVER['SERVER_NAME'];
-	$GLOBALS['adminpath'] = $_SERVER['SERVER_NAME'].'/administrator/';
+	$GLOBALS['basepath'] = "http://".$_SERVER['SERVER_NAME'];
+	$GLOBALS['adminpath'] = "http://".$_SERVER['SERVER_NAME'].'/administrator/';
 	$GLOBALS['devicetype'] = get_device();
 }
 
@@ -35,6 +35,10 @@ function get_device(){
 
 	// }
 	return $device;
+}
+
+function check_username_code($username){
+
 }
 
 function user_create($type='name'){

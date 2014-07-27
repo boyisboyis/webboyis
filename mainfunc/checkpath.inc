@@ -10,9 +10,20 @@
 		}
 		else if($path_get=='adminauto'){
 			include('administrator/view.php');
-			//go_path('administrator/view.php');
+		}
+		else if($path_get=='admincss'){
+			include('administrator/css/admin_main.css');
+		}
+		else if($path_get=='adminlogin'){
+			include('administrator/func/controller/min/admin_login.min.js');
+		}
+		else if($path_get=='controllerloginadmin'){
+			include('administrator/controller/login.php');
 		}
 		else if($path_get=='404'){
+			include('errormessages/404.php');
+		}
+		else{
 			include('errormessages/404.php');
 		}
 	}

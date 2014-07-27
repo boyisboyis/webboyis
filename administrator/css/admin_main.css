@@ -1,124 +1,145 @@
-@font-face{
-	font-family: cartoon;
-	src:url(../font/Comic_White_Rabbit_.otf);
-}
-
 * {
-	margin: 0;
-	padding: 0;
-	font-family: Verdana;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana;
 }
 
-a{
-	text-decoration: none;
-	color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-#wrap-admin-header{
-	width: 100%;
-	height: 30px;
-	background: #2ecc71;
-	border-bottom: 3px solid #27ae60;
+#wrap-admin-header {
+  width: 100%;
+  height: 30px;
+  background: #2ecc71;
+  border-bottom: 3px solid #27ae60;
+}
+#wrap-admin-header .ah-w {
+  width: 920px;
+  margin: 0 auto;
+  height: 30px;
 }
 
-.ah-w{
-	width: 920px;
-	margin:0 auto;
-	height: 30px;
+#wrap-admin-content {
+  width: 100%;
+}
+#wrap-admin-content .al-w {
+  width: 920px;
+  margin: 50px auto 0 auto;
+  background: #ecf0f1;
+  border-radius: 10px;
 }
 
-#wrap-admin-content{
-	width: 100%;
+#admin-login-content {
+  width: 600px;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+#admin-login-content .al-t {
+  position: relative;
+  background: #3FC380;
+  border: 4px solid #bfe7f5;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+#admin-login-content .al-t p {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  color: #FFFFFF;
 }
 
-.al-w{
-	width: 920px;
-	margin: 10px auto 0 auto;
-	background: #ecf0f1;
-	border-radius: 10px;
-}
-
-.al-t {
-	position: relative;
-	background: #3FC380;
-	border: 4px solid #bfe7f5;
-	width: 50%;
-	margin: 0 auto;
-	border-radius: 15px;
-}
-.al-t p{
-	text-align: center;
-	padding: 20px;
-	font-size: 30px;
-	color:#FFFFFF;
-}
 .al-t:after, .al-t:before {
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 .al-t:after {
-	border-color: rgba(63, 195, 128, 0);
-	border-top-color: #3FC380;
-	border-width: 30px;
-	margin-left: -30px;
+  border-color: rgba(63, 195, 128, 0);
+  border-top-color: #3FC380;
+  border-width: 30px;
+  margin-left: -30px;
 }
+
 .al-t:before {
-	border-color: rgba(191, 231, 245, 0);
-	border-top-color: #bfe7f5;
-	border-width: 36px;
-	margin-left: -36px;
+  border-color: rgba(191, 231, 245, 0);
+  border-top-color: #bfe7f5;
+  border-width: 36px;
+  margin-left: -36px;
 }
 
-#admin-login-content{
-	width: 600px;
-	margin: 0 auto;
-	padding: 20px 0;
+.al-c {
+  margin: 35px 35px 0;
+  width: 442px;
+  border-top: 4px solid #bfe7f5;
+  border-left: 4px solid #bfe7f5;
+  border-right: 4px solid #bfe7f5;
+  padding: 40px;
 }
 
-.al-c{
-	margin: 35px;
-	width: 482px;
-	border-top: 4px solid #bfe7f5;
-	border-left: 4px solid #bfe7f5;
-	border-right: 4px solid #bfe7f5;
-	padding: 20px;
+#submit-form {
+  width: 530px;
+  height: 50px;
+  margin: 0 auto;
+  background: #2ecc71;
+  cursor: pointer;
 }
 
-#submit-form{
-	width: 530px;
-	height: 50px;
-	background: gray;
-	margin: 0 auto;
+#submit-form:hover {
+  background: #27ae60;
 }
 
-.input_style{
-	width: 100%;
-	height: 50px;
-	font-size: 30px;
+#submit-form p {
+  color: #FFFFFF;
+  margin: 0 auto;
+  font-size: 22px;
+  line-height: 48px;
+  text-align: center;
 }
 
-#wrap-admin-footer{
-	width: 100%;
-	background: #ecf0f1;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	height: 50px;
+.input_style {
+  width: 100%;
+  height: 50px;
+  font-size: 30px;
 }
 
-.af-w{
-	width: 920px;
-	margin: 0 auto;
-	border-top:3px solid #27ae60;
-	text-align: center;
-	padding: 13px 0;
-	font-size: 13px;
-	color: gray;
+#wrap-admin-footer {
+  width: 100%;
+  background: #ecf0f1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+}
+#wrap-admin-footer .af-w {
+  width: 920px;
+  margin: 0 auto;
+  border-top: 3px solid #27ae60;
+  text-align: center;
+  padding: 13px 0;
+  font-size: 13px;
+  color: gray;
+}
+
+#left-content {
+  width: 300px;
+  height: 200px;
+  float: left;
+  border-right: 1px solid black;
+}
+
+#right-content {
+  float: left;
+}
+
+.non-list-style {
+  list-style: none;
 }

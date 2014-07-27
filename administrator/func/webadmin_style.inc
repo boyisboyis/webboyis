@@ -3,7 +3,11 @@
 	function admin_style_head_tag($type_admin=1){ // 1 is login already, 0 is no login
 		$str = "<head>";
 		$str .= admin_meta_tags();
-		$str .= link_style("/administrator/css/admin_main.css");
+		$str .= link_style("/adminwebboyis/css/admin_main.css");
+		$str .= javascript_tags('/js/ext/jquery.js');
+		if($type_admin==0){
+			$str .= javascript_login_admin();
+		}
 		$str .= "</head>";
 		return $str;
 	}
@@ -49,15 +53,32 @@
 		$str .= "<p>LOGIN</p>";
 		$str .= "</div>";
 		$str .= "<div class='al-c'>";
+		$str .= "<div>";
+		$str .= "<p class='login-error'></p>";
+		$str .= "</div>";
 		$str .= "<div id='login-form'>";
-		$str .= "<input type='input' name='username' class='input_style' placeholder='Username'>";
+		$str .= "<input type='input'  id='username' name='username' class='input_style' placeholder='Username'>";
 		$str .= "<div style='margin-top:10px;'></div>";
-		$str .= "<input type='password' name='password' class='input_style' placeholder='Password'>";
+		$str .= "<input type='password' id='password' name='password' class='input_style' placeholder='Password'>";
 		$str .= "</div>";
 		$str .= "</div>";
 		$str .= "<div id='submit-form'>";
+		$str .= "<p>SIGN IN</p>";
 		$str .= "</div>";
 		$str .= "</div>";
+		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_controller_style(){
+		$str = "<div id='left-content'>";
+		$str .= "<div>";
+		$str .= "<ol class='non-list-style'>";
+		$str .= "<li><a href='?addmenu=left'>ADD MENU</a></li>";
+		$str .= "</ol>";
+		$str .= "</div>";
+		$str .= "</div>";
+		$str .= "<div id='right-content'>";
 		$str .= "</div>";
 		return $str;
 	}
@@ -70,6 +91,13 @@
 				"content" => "'width=device-width, initial-scale=1, maximum-scale=1'"
 			)
 		);
+		return $str;
+	}
+
+
+	function javascript_login_admin(){
+		$str = "";
+		$str .= javascript_tags("/adminwebboyis/javascript/admin_login.js");
 		return $str;
 	}
 

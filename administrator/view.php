@@ -8,6 +8,9 @@
 		$type_admin = 0;
 		$str = admin_login_style();
 	}
+	else if(isset($_SESSION['admin_login'])){
+		$str = admin_controller_style();
+	}
 	echo admin_style($str, $type_admin);
 
 ?>
