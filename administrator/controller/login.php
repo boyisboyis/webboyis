@@ -9,6 +9,9 @@
 		exit();
 	}
 
+	if(check_md5()){
+
+	}
 	$_SESSION['admin_login'] = "test";
 	echo "ok";
 

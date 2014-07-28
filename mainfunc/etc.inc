@@ -4,7 +4,7 @@ session_start();
 
 function set_global_path(){
 	$GLOBALS['basepath'] = "http://".$_SERVER['SERVER_NAME'];
-	$GLOBALS['adminpath'] = "http://".$_SERVER['SERVER_NAME'].'/administrator/';
+	$GLOBALS['adminpath'] = "http://".$_SERVER['SERVER_NAME'].'/adminwebboyis/';
 	$GLOBALS['devicetype'] = get_device();
 }
 
@@ -48,6 +48,43 @@ function user_create($type='name'){
 	else if($type=='email'){
 		return "boyisboyis261129@gmail.com";
 	}	
+}
+
+function code_str($str){
+	$code = "";
+	$md5 = md5($str);
+	$length = strlen($md5);
+    for ($i = 0; $i < $length; $i++) 
+    { 
+    	if(is_numeric($md5[$i])){
+    		$code .= chr($md5[$i]+97);
+    	}
+    	else{
+    		$code .= ord($md5[$i]) - 97;
+    	}    	
+    }
+    return $code;
+}
+
+function decode_str($code){
+	$md5 = "";
+	$length = strlen($code);
+	for ($i = 0; $i < $length; $i++) {
+		if(is_numeric($code[$i])){
+			$md5 .= chr($code[$i]+97);
+		}
+		else{
+			$md5 .= ord($code[$i])-97;
+		}
+	}
+	return $md5;
+}
+
+function check_md5($code1,$code2){
+	if($code1==$code2){
+		return true;
+	}
+	return false;
 }
 
 ?>

@@ -74,7 +74,7 @@
 		$str = "<div id='left-content'>";
 		$str .= "<div>";
 		$str .= "<ol class='non-list-style'>";
-		$str .= "<li><a href='?addmenu=left'>ADD MENU</a></li>";
+		$str .= "<li><a href='".$GLOBALS['adminpath']."?addmenu=left'>ADD MENU</a></li>";
 		$str .= "</ol>";
 		$str .= "</div>";
 		$str .= "</div>";
