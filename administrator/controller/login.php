@@ -8,12 +8,23 @@
 		echo '2';
 		exit();
 	}
-
-	if(check_md5()){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$sql = "SELECT * FROM admin_web WHERE adminuser='{$username}'";
+	$result = sql_getone($sql);
+	$rowcount=mysqli_num_rows($result);
+	if($rowcount>0){
 
 	}
-	$_SESSION['admin_login'] = "test";
-	echo "ok";
+	else{
+		echo '3';
+		exit();
+	}
+	// if(check_md5()){
+
+	// }
+	//$_SESSION['admin_login'] = "test";
+	//echo "ok";
 
 
 ?>
