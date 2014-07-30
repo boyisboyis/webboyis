@@ -54,7 +54,7 @@
 		$str .= "</div>";
 		$str .= "<div class='al-c'>";
 		$str .= "<div>";
-		$str .= "<p class='login-error'></p>";
+		$str .= "<p id='login-error'></p>";
 		$str .= "</div>";
 		$str .= "<div id='login-form'>";
 		$str .= "<input type='input'  id='username' name='username' class='input_style' placeholder='Username'>";

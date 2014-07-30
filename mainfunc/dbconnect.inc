@@ -12,12 +12,23 @@
 
 	function sql_getone($sql){
 		$result = exec_sql($sql);
-		return $result;
+		$ret = "";
+		if(mysqli_num_rows($result) > 0){
+			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$ret = current($row);
+		}
+		return $ret;
 	}
 
 	function sql_getall($sql){
 		$result = exec_sql($sql);
-		return $result;
+		$ret = array();
+		if(mysqli_num_rows($result) > 0){
+			while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				$ret[] = $row;
+			}
+		}
+		return $ret;
 	}
 
 	function sql_simple($sql){

@@ -143,3 +143,8 @@ a {
 .non-list-style {
   list-style: none;
 }
+
+#login-error {
+  padding: 10px 0;
+  color: red;
+}

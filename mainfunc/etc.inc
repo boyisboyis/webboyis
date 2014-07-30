@@ -63,6 +63,7 @@ function code_str($str){
     		$code .= ord($md5[$i]) - 97;
     	}    	
     }
+    $code = md5(base64_encode($code));
     return $code;
 }
 
@@ -86,5 +87,14 @@ function check_md5($code1,$code2){
 	}
 	return false;
 }
+
+function get_text($key){
+	require_once("language/th.lang");
+	if(isset($lang[$key])){
+		return $lang[$key];
+	}
+	return ""; 
+}
+
 
 ?>

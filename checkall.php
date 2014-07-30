@@ -1,5 +1,5 @@
 <?php
-
+	
 	include("mainfunc/include.php");
 	set_global_path();
 	GLOBAL $connection_db;
