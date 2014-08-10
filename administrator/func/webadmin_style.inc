@@ -70,16 +70,71 @@
 		return $str;
 	}
 
-	function admin_controller_style(){
+	function admin_controller_style($menuselect, $arr_etc=array()){
+		$type = "";
 		$str = "<div id='left-content'>";
 		$str .= "<div>";
 		$str .= "<ol class='non-list-style'>";
-		$str .= "<li><a href='".$GLOBALS['adminpath']."?addmenu=left'>ADD MENU</a></li>";
+		$str .= "<li><a href='".$GLOBALS['adminpath']."?menus=addmenu'>ADD MENU</a></li>";
 		$str .= "</ol>";
 		$str .= "</div>";
 		$str .= "</div>";
 		$str .= "<div id='right-content'>";
+		if($menuselect=="main"){
+
+		}
+		else if($menuselect=='addmenu'){
+			if(isset($arr_etc['type']) && $arr_etc['type']!=""){
+				$type = $arr_etc['type'];
+			}
+			$str .= "<div id='add-menu'>";
+			$str .= admin_addmenu_header();
+			$str .= "<div id='add-menu-content'>";
+			if($type = "add"){
+				$str .= admin_addmenu_add();
+			}else{
+				$str .= admin_addmenu_main();
+			}
+			$str .= "</div>";
+			$str .= "</div>";
+			
+		}
 		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_addmenu_add(){
+		$str = "";
+		$str .= "<div>";
+		$str .= "<form action='POST' href='#'>";
+		$str .= "<input type='text' name='menuname'>";
+		$str .= "<select name='menuposition'>";
+		$str .= "<option value='left'>LEFT</option>";
+		$str .= "<option value='right'>RIGHT</option>";
+		$str .= "</select>";
+		$str .= "</form>";
+		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_addmenu_header(){
+		$str = "";
+		$str .=  "<div id='add-menu-header'>";
+		$str .= "<div id='add-menu-h-left'>";
+		$str .= "<a href='?menus=addmenu&type=add' class='alinkhead'>ADD</a>";
+		$str .= "</div>";
+		$str .=  "</div>";
+		return $str;
+	}
+	function admin_addmenu_main(){
+		$str = "";
+		$result = sql_getall("SELECT * FROM menu");
+		if(count($result)<=0){
+			$str .= "menu 0";
+		}
+		else{
+
+		}
 		return $str;
 	}
 

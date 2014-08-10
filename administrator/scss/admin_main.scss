@@ -36,6 +36,16 @@ a{
 		background: #ecf0f1;
 		border-radius: 10px;
 	}
+	#left-content{
+		width: 15%;
+		height: 200px;
+		float: left;
+	}
+
+	#right-content{
+		width: 85%;
+		float: left;
+	}
 }
 
 #admin-login-content{
@@ -82,8 +92,6 @@ a{
 	margin-left: -36px;
 }
 
-
-
 .al-c{
 	margin: 35px 35px 0;
 	width: 442px;
@@ -99,19 +107,18 @@ a{
 	margin: 0 auto;
 	background: $color-g-h;
 	cursor: pointer;
+	p{
+		color: #FFFFFF;
+		margin: 0 auto;
+		font-size: 22px;
+		line-height: 48px;
+		text-align: center;
+	}
+	&:hover{
+		background: $color-g-border;
+	}
 }
 
-#submit-form:hover{
-	background: $color-g-border;
-}
-
-#submit-form p{
-	color: #FFFFFF;
-	margin: 0 auto;
-	font-size: 22px;
-	line-height: 48px;
-	text-align: center;
-}
 
 .input_style{
 	width: 100%;
@@ -137,16 +144,6 @@ a{
 	}
 }
 
-#left-content{
-	width: 300px;
-	height: 200px;
-	float: left;
-	border-right: 1px solid black;
-}
-
-#right-content{
-	float: left;
-}
 
 .non-list-style{
 	list-style: none;
@@ -155,4 +152,16 @@ a{
 #login-error{
 	padding:10px 0;
 	color: red;
+}
+
+#add-menu-header{
+	margin-top :10px;
+	background: #ECF0F1;
+	border-bottom: 2px solid #BDC3C7;
+	width: 100%;
+	height: 30px;
+}
+
+#add-menu-content{
+	padding: 10px;
 }
