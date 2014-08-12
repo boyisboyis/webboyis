@@ -94,6 +94,22 @@ a {
   padding: 40px;
 }
 
+.b-left {
+  border-left: 1px solid black;
+}
+
+.b-right {
+  border-right: 1px solid black;
+}
+
+.b-top {
+  border-top: 1px solid black;
+}
+
+.b-bottom {
+  border-bottom: 1px solid black;
+}
+
 #submit-form {
   width: 530px;
   height: 50px;
@@ -155,4 +171,15 @@ a {
 
 #add-menu-content {
   padding: 10px;
+}
+#add-menu-content table {
+  border-collapse: collapse;
+}
+
+.form-label {
+  padding: 10px 10px 10px 0;
+}
+
+.td-child {
+  padding-left: 15px;
 }

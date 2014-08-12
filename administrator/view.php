@@ -10,17 +10,27 @@
 		$str = admin_login_style();
 	}
 	else if(isset($_SESSION['admin_login'])){
-		$menus = "";
-		if(!isset($_GET['menus']) || $_GET['menus']==""){
-			$menus = "main";
+		if(!isset($_GET['controller'])){
+			$menus = "";
+			if(!isset($_GET['menus']) || $_GET['menus']==""){
+				$menus = "main";
+			}
+			else{
+				$menus = $_GET['menus'];
+			}
+			if(isset($_GET['type']) && $_GET['type']!=""){
+				$etc_ar['type'] = $_GET['type'];
+			}
+			$str = admin_controller_style($menus, $etc_ar);
 		}
 		else{
-			$menus = $_GET['menus'];
+			$controller = trim($_GET['controller']);
+			if($controller=='addmenu'){
+				require_once("controller/addmenu.php");
+				die();
+			}
 		}
-		if(isset($_GET['type']) && $_GET['type']!=""){
-			$etc_ar['type'] = $_GET['type'];
-		}
-		$str = admin_controller_style($menus, $etc_ar);
+		
 	}
 	echo admin_style($str, $type_admin);
 

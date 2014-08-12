@@ -90,7 +90,7 @@
 			$str .= "<div id='add-menu'>";
 			$str .= admin_addmenu_header();
 			$str .= "<div id='add-menu-content'>";
-			if($type = "add"){
+			if($type == "add"){
 				$str .= admin_addmenu_add();
 			}else{
 				$str .= admin_addmenu_main();
@@ -106,12 +106,38 @@
 	function admin_addmenu_add(){
 		$str = "";
 		$str .= "<div>";
-		$str .= "<form action='POST' href='#'>";
-		$str .= "<input type='text' name='menuname'>";
+		$str .= "<form method='POST' action='?controller=addmenu&mode=1'>";
+		$str .= "<table>";
+		$str .= "<tr>";
+		$str .= "<td class='b-right form-label'>Name TH</td>";
+		$str .= "<td><input type='text' name='menuname_th'></td>";
+		$str .= "</tr>";
+		$str .= "<tr>";
+		$str .= "<td class='b-right form-label'>Name EN</td>";
+		$str .= "<td><input type='text' name='menuname_en'></td>";
+		$str .= "</tr>";
+		$str .= "<tr>";
+		$str .= "<td class='b-right form-label'>Parent</td>";
+		$str .= "<td>";
+		$str .= "<select name='menuparent'>";
+		$str .= "<option value=0>Main</option>";
+		$str .= get_parent_addmenu();
+		$str .= "</select>";
+		$str .= "</td>";
+		$str .= "</tr>";
+		$str .= "<tr>";
+		$str .= "<td class='b-right form-label'>Position</td>";
+		$str .= "<td>";
 		$str .= "<select name='menuposition'>";
 		$str .= "<option value='left'>LEFT</option>";
 		$str .= "<option value='right'>RIGHT</option>";
 		$str .= "</select>";
+		$str .= "</td>";
+		$str .= "</tr>";
+		$str .= "<tr>";
+		$str .= "<td colspan='2'><input type='submit' value='SUBMIT'></td>";
+		$str .= "</tr>";
+		$str .= "<table>";
 		$str .= "</form>";
 		$str .= "</div>";
 		return $str;
@@ -128,13 +154,57 @@
 	}
 	function admin_addmenu_main(){
 		$str = "";
-		$result = sql_getall("SELECT * FROM menu");
-		if(count($result)<=0){
+		$result = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid and menu.parentid = 0");
+		$str .= "<table>";
+		$str .= "<thead>";
+		$str .= "<tr>";
+		$str .= "<td>NAME</td>";
+		$str .= "<td>sequence</td>";
+		$str .= "<td>VISIBILITY</td>";
+		$str .= "</tr>";
+		$str .= "<thead>";
+		$str .= "<tbody>";
+		$n = count($result);
+		if($n<=0){
 			$str .= "menu 0";
 		}
 		else{
-
+			for($i=0;$i<$n;$i++){
+				$str .= "<tr>";
+				$str .= "<td class='td-main'>".$result[$i]['menu_th']."</td>";
+				$str .= "<td>";
+				if($i>=0 && $i+1<$n){
+					$str .= "DOWN";
+				}
+				if($i>0 && $i-1<$n){
+					$str .= "UP";
+				}
+				$str .= "</td>";
+				if($result[$i]['visible']==0){
+					$str .= "<td>SHOW</td>";
+				}
+				else{
+					$str .= "<td>HIDE</td>";
+				}
+				$str .= "</tr>";
+				$parentid = $result[$i]['menuid'];
+				//echo "SELECT * FROM menu, translate_menu WHERE menu.menuid=translate_menu.menuid AND menu.parentid=".$parentid." ORDER BY seq";
+				//echo "<br>";
+				$parentdata = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.menuid=translate_menu.menuid AND menu.parentid=".$parentid." ORDER BY seq");
+				$k = count($parentdata);
+				if($k > 0){
+					for($j=0;$j<$k;$j++){
+						$str .= "<tr>";
+						$str .= "<td class='td-child'>".$parentdata[$j]['menu_th']."</td>";
+						$str .= "</tr>";
+					}
+				}
+				//$result = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.parentid=".$parentid." ORDER BY seq");
+			}
+			//$str .= "menu ".count($result);
 		}
+		$str .= "</tbody>";
+		$str .= "</table>";
 		return $str;
 	}
 
@@ -153,6 +223,19 @@
 	function javascript_login_admin(){
 		$str = "";
 		$str .= javascript_tags("/adminwebboyis/javascript/admin_login.js");
+		return $str;
+	}
+
+	function get_parent_addmenu(){
+		$str = "";
+		$sql = "SELECT * FROM menu, translate_menu where menu.menuid = translate_menu.menuid and menu.parentid = 0";
+		$result = sql_getall($sql);
+		if(count($result) > 0){
+			$n = count($result);
+			for($i=0; $i<$n; $i++){
+				$str .= "<option value='".$result[$i]['menuid']."'>".$result[$i]['menu_th']."</option>";
+			}
+		}
 		return $str;
 	}
 

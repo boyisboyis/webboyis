@@ -4,6 +4,7 @@
 		GLOBAL $connection_db;
 		require_once('config/db_config.inc');
 		$connection_db = mysqli_connect($host,$db_username,$db_password,$db_name);
+		mysqli_query($connection_db, "SET NAMES UTF8");
 		if(mysqli_connect_errno()){
 			require_once("errormessages/db_error.php");
 			exit();
