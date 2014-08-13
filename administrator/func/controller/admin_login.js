@@ -37,6 +37,7 @@ function login_admin(username, password){
 			"password" : password
 		},
 		success: function(response){
+			console.log(response);
 			if($.trim(response)=='ok'){
 				location.reload();
 			}

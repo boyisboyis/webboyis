@@ -96,5 +96,16 @@ function get_text($key){
 	return ""; 
 }
 
+function create_file_json($arr, $path){
+	
+}
+
+function gen_json_pattern($arr = array()){
+	if(is_array($arr) && count($arr) > 0){
+		echo json_encode($arr);
+	}
+}
+
+
 
 ?>

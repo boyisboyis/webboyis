@@ -92,7 +92,8 @@
 			$str .= "<div id='add-menu-content'>";
 			if($type == "add"){
 				$str .= admin_addmenu_add();
-			}else{
+			}
+			else{
 				$str .= admin_addmenu_main();
 			}
 			$str .= "</div>";
@@ -106,7 +107,7 @@
 	function admin_addmenu_add(){
 		$str = "";
 		$str .= "<div>";
-		$str .= "<form method='POST' action='?controller=addmenu&mode=1'>";
+		$str .= "<form method='POST' action='?controller=addmenu&mode=add'>";
 		$str .= "<table>";
 		$str .= "<tr>";
 		$str .= "<td class='b-right form-label'>Name TH</td>";
@@ -148,6 +149,7 @@
 		$str .=  "<div id='add-menu-header'>";
 		$str .= "<div id='add-menu-h-left'>";
 		$str .= "<a href='?menus=addmenu&type=add' class='alinkhead'>ADD</a>";
+		$str .= "<a href='?controller=addmenu&mode=gen' class='alinkhead'>GEN MENU</a>";
 		$str .= "</div>";
 		$str .=  "</div>";
 		return $str;
@@ -171,7 +173,7 @@
 		else{
 			for($i=0;$i<$n;$i++){
 				$str .= "<tr>";
-				$str .= "<td class='td-main'>".$result[$i]['menu_th']."</td>";
+				$str .= "<td class='td-main'><a href='#'>".$result[$i]['menu_th']."</a></td>";
 				$str .= "<td>";
 				if($i>=0 && $i+1<$n){
 					$str .= "DOWN";
@@ -181,10 +183,10 @@
 				}
 				$str .= "</td>";
 				if($result[$i]['visible']==0){
-					$str .= "<td>SHOW</td>";
+					$str .= "<td><a href='#'>SHOW</a></td>";
 				}
 				else{
-					$str .= "<td>HIDE</td>";
+					$str .= "<td><a href='#'>HIDE</a></td>";
 				}
 				$str .= "</tr>";
 				$parentid = $result[$i]['menuid'];
@@ -195,7 +197,21 @@
 				if($k > 0){
 					for($j=0;$j<$k;$j++){
 						$str .= "<tr>";
-						$str .= "<td class='td-child'>".$parentdata[$j]['menu_th']."</td>";
+						$str .= "<td class='td-child'><a href='#'>".$parentdata[$j]['menu_th']."</a></td>";
+						$str .= "<td>";
+						if($j>=0 && $j+1<$n){
+							$str .= "DOWN";
+						}
+						if($j>0 && $j-1<$n){
+							$str .= "UP";
+						}
+						$str .= "</td>";
+						if($parentdata[$j]['visible']==0){
+							$str .= "<td><a href='#'>SHOW</a></td>";
+						}
+						else{
+							$str .= "<td><a href='#'>HIDE</a></td>";
+						}
 						$str .= "</tr>";
 					}
 				}
