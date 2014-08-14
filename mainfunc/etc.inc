@@ -96,13 +96,27 @@ function get_text($key){
 	return ""; 
 }
 
-function create_file_json($arr, $path){
+function create_file_json($arr, $path, $name){
+	$file = fopen($path.$name.".json","w");
+	if (flock($file,LOCK_EX)){
+		fwrite($file,json_encode($arr));
+	  // release lock
+	  	flock($file,LOCK_UN);
+		fclose($file);
+	  	return "{'status' : 'complete','message' : 'write complete'}";
+	}
+	else{
+		fclose($file);
+		return "{'status' : 'error', 'message' : 'locking error'}";
+	}
 	
 }
 
 function gen_json_pattern($arr = array()){
 	if(is_array($arr) && count($arr) > 0){
-		echo json_encode($arr);
+		//echo json_encode($arr);
+		$result = create_file_json($arr, "data/","menuleft");
+		echo $result;
 	}
 }
 
