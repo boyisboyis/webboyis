@@ -107,7 +107,7 @@ function create_file_json($arr, $path, $name){
 	}
 	else{
 		fclose($file);
-		return "{'status' : 'error', 'message' : 'locking error'}";
+		return "{'status' : 'error', 'code' : 1, 'message' : 'locking error'}";
 	}
 	
 }
@@ -115,8 +115,7 @@ function create_file_json($arr, $path, $name){
 function gen_json_pattern($arr = array()){
 	if(is_array($arr) && count($arr) > 0){
 		//echo json_encode($arr);
-		$result = create_file_json($arr, "data/","menuleft");
-		echo $result;
+		create_file_json($arr, "data/","menuleft");
 	}
 }
 

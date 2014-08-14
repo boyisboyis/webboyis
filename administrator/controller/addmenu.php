@@ -10,6 +10,9 @@
 	else if($mode=='gen'){
 		gen_addmenu();
 	}
+	else if($mode='up'){
+		menu_up();
+	}
 
 	function addmenu(){
 		if(!isset($_POST['menuname_th'])){
@@ -70,11 +73,23 @@
 				$data[$key][$topmenu[$i]['position']][] = $topdata;
 			}
 		}
-		/*echo "<br><br>";
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";*/
 		gen_json_pattern($data);
+		go_path("?menus=addmenu");
+	}
+
+	function menu_up(){
+		if(!isset($_GET['main'])){
+			go_path($GLOBALS['adminpath']);
+		}
+		if(!isset($_GET['seq'])){
+			go_path($GLOBALS['adminpath']);
+		}
+
+		$maintype = $_GET['main'];
+		$seques = $_GET['seq'];
+		echo $maintype;
+		echo $seques;
+
 	}
 
 ?>

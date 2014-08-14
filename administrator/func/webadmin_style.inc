@@ -179,7 +179,7 @@
 					$str .= "DOWN";
 				}
 				if($i>0 && $i-1<$n){
-					$str .= "UP";
+					$str .= "<a href='?controller=addmenu&mode=up&main=1&seq=".$i."'>UP</a>";
 				}
 				$str .= "</td>";
 				if($result[$i]['visible']==0){
