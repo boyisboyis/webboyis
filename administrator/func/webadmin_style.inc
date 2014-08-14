@@ -156,7 +156,7 @@
 	}
 	function admin_addmenu_main(){
 		$str = "";
-		$result = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid and menu.parentid = 0");
+		$result = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid AND menu.parentid = 0 ORDER BY menu.seq");
 		$str .= "<table>";
 		$str .= "<thead>";
 		$str .= "<tr>";
@@ -179,7 +179,7 @@
 					$str .= "DOWN";
 				}
 				if($i>0 && $i-1<$n){
-					$str .= "<a href='?controller=addmenu&mode=up&main=1&seq=".$i."'>UP</a>";
+					$str .= "<a href='?controller=addmenu&mode=up&menuid=".$result[$i]['menuid']."&parentid=0&seq=".$i."'>UP</a>";
 				}
 				$str .= "</td>";
 				if($result[$i]['visible']==0){

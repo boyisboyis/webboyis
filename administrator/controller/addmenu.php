@@ -78,16 +78,26 @@
 	}
 
 	function menu_up(){
-		if(!isset($_GET['main'])){
+		if(!isset($_GET['menuid'])){
+			go_path($GLOBALS['adminpath']);
+		}
+		if(!isset($_GET['parentid'])){
 			go_path($GLOBALS['adminpath']);
 		}
 		if(!isset($_GET['seq'])){
 			go_path($GLOBALS['adminpath']);
 		}
 
-		$maintype = $_GET['main'];
+		$menuid = $_GET['menuid'];
+		$parentid = $_GET['parentid'];
 		$seques = $_GET['seq'];
-		echo $maintype;
+		$sequesup = $seques - 1;
+		$sql = "UPDATE menu SET seq={$seques} WHERE parentid={$parentid} AND seq={$sequesup}";
+		sql_simple($sql);
+		$sql = "UPDATE menu SET seq={$sequesup} WHERE parentid={$parentid} AND menuid={$menuid}";
+		sql_simple($sql);
+		echo $menuid;
+		echo $parentid;
 		echo $seques;
 
 	}
