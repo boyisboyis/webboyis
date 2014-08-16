@@ -10,8 +10,14 @@
 	else if($mode=='gen'){
 		gen_addmenu();
 	}
-	else if($mode='up'){
+	else if($mode=='up'){
 		menu_up();
+	}
+	else if($mode=='show'){
+		menu_show();
+	}
+	else if($mode=="hide"){
+		menu_hide();
 	}
 
 	function addmenu(){
@@ -99,7 +105,28 @@
 		echo $menuid;
 		echo $parentid;
 		echo $seques;
+	}
 
+	function menu_show(){
+		if(!isset($_GET['menuid'])){
+			go_path($GLOBALS['adminpath']);
+		}
+		$menuid = $_GET['menuid'];
+		echo $menuid;
+		$sql = "UPDATE menu SET visible = 1 WHERE menuid=".$menuid;//UPDATE `webboyis`.`menu` SET `visible` = '1' WHERE `menu`.`menuid` = 1;
+		sql_simple($sql);
+		go_path("?menus=addmenu");
+	}
+
+	function menu_hide(){
+		if(!isset($_GET['menuid'])){
+			go_path($GLOBALS['adminpath']);
+		}
+		$menuid = $_GET['menuid'];
+		echo $menuid;
+		$sql = "UPDATE menu SET visible = 0 WHERE menuid=".$menuid;//UPDATE `webboyis`.`menu` SET `visible` = '1' WHERE `menu`.`menuid` = 1;
+		sql_simple($sql);
+		go_path("?menus=addmenu");
 	}
 
 ?>

@@ -6,6 +6,7 @@ function set_global_path(){
 	$GLOBALS['basepath'] = "http://".$_SERVER['SERVER_NAME'];
 	$GLOBALS['adminpath'] = "http://".$_SERVER['SERVER_NAME'].'/adminwebboyis/';
 	$GLOBALS['devicetype'] = get_device();
+	$GLOBALS['language'] = 'th';
 }
 
 function get_device(){
@@ -119,6 +120,20 @@ function gen_json_pattern($arr = array()){
 	}
 }
 
+function get_json_data($path, $file){
+	if(file_exists($path.$file)){
+		return file_get_contents($path.$file);
+	}
+	return "";
+}
+
+function con_json_to_array($json){
+	$arr = json_decode($json, true);
+	if(is_null($arr)){
+		return "";
+	}
+	return $arr;
+}
 
 
 ?>

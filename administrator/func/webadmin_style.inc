@@ -183,10 +183,10 @@
 				}
 				$str .= "</td>";
 				if($result[$i]['visible']==0){
-					$str .= "<td><a href='#'>SHOW</a></td>";
+					$str .= "<td><a href='?controller=addmenu&mode=show&menuid=".$result[$i]['menuid']."'>SHOW</a></td>";
 				}
 				else{
-					$str .= "<td><a href='#'>HIDE</a></td>";
+					$str .= "<td><a href='?controller=addmenu&mode=hide&menuid=".$result[$i]['menuid']."'>HIDE</a></td>";
 				}
 				$str .= "</tr>";
 				$parentid = $result[$i]['menuid'];
@@ -207,10 +207,10 @@
 						}
 						$str .= "</td>";
 						if($parentdata[$j]['visible']==0){
-							$str .= "<td><a href='#'>SHOW</a></td>";
+							$str .= "<td><a href='?controller=addmenu&mode=show&menuid=".$parentdata[$j]['menuid']."'>SHOW</a></td>";
 						}
 						else{
-							$str .= "<td><a href='#'>HIDE</a></td>";
+							$str .= "<td><a href='?controller=addmenu&mode=hide&menuid=".$parentdata[$j]['menuid']."'>HIDE</a></td>";
 						}
 						$str .= "</tr>";
 					}
