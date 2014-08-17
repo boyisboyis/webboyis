@@ -1,3 +1,7 @@
+@font-face {
+  font-family: fontDef;
+  src: url(Track.otf);
+}
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +30,10 @@
     margin: 0 auto;
   }
 }
+h2 {
+  font-family: fontDef;
+}
+
 @media all and (max-width: 920px) {
   #h-box {
     width: 100%;
