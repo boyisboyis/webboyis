@@ -3,6 +3,36 @@
 	padding:0;
 }
 
+#header-wrap{
+	height: 180px;
+	#h-box{
+		height: 100%;
+		text-align: center;
+		padding-top: 20px;
+		#h-box-logo{
+			border: 1px solid #bdc3c7;
+			overflow: hidden;
+			height: 100px;
+			width: 100px;
+			border-radius: 100%;
+			margin: 0 auto;
+		}
+	}
+}
+
+@media all and (min-width: 920px){
+	#h-box{
+		width: 920px;
+		margin: 0 auto;
+	}
+}
+
+@media all and (max-width: 920px){
+	#h-box{
+		width: 100%;
+	}
+}
+
 .menu-left-parent{
 	padding-left: 10px;
 }

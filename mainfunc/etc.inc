@@ -135,5 +135,9 @@ function con_json_to_array($json){
 	return $arr;
 }
 
+function get_language_arr(){
+	return array("th", "en");
+}
+
 
 ?>

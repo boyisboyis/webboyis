@@ -76,6 +76,7 @@
 		$str .= "<div>";
 		$str .= "<ol class='non-list-style'>";
 		$str .= "<li><a href='".$GLOBALS['adminpath']."?menus=addmenu'>ADD MENU</a></li>";
+		$str .= "<li><a href='".$GLOBALS['adminpath']."?menus=topic'>TOPIC</a></li>";
 		$str .= "</ol>";
 		$str .= "</div>";
 		$str .= "</div>";
@@ -93,6 +94,9 @@
 			if($type == "add"){
 				$str .= admin_addmenu_add();
 			}
+			if($type == "edit"){
+				$str .= admin_addmenu_edit();
+			}
 			else{
 				$str .= admin_addmenu_main();
 			}
@@ -101,6 +105,41 @@
 			
 		}
 		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_addmenu_edit(){
+		if(!isset($_GET['menuid'])){
+			return admin_addmenu_main();
+		}
+		$sql = "SELECT * FROM menu,translate_menu WHERE menu.menuid=1 AND menu.menuid=translate_menu.menuid";
+		$result = sql_getall($sql);
+		$language = get_language_arr();
+		$str = "";
+		$str .= "<div>";
+		$str .= "<form method='POST' action='?controller=addmenu&mode=edit'>";
+		$str .= "<table>";
+		$n = count($language);
+		for($i=0;$i<$n;$i++){
+			$lang = $language[$i];
+			$str .= "<tr>";
+			$str .= "<td class='b-right form-label'>Name ".strtoupper($lang)."</td>";
+			$str .= "<td><input type='text' name='menuname_".$lang."' value='".$result[0]['menu_'.$lang]."'></td>";
+			$str .= "</tr>";
+		}
+		$str .= "<tr>";
+		$str .= "<td class='b-right form-label'>Parent</td>";
+		$str .= "<td>";
+		$str .= "<select name='menuparent'>";
+		$str .= "<option value=0>Main</option>";
+		$str .= get_parent_addmenu();
+		$str .= "</select>";
+		$str .= "</td>";
+		$str .= "</tr>";
+		$str .= "</table>";
+		$str .= "</form>";
+		$str .= "</div>";
+		print_r($result);
 		return $str;
 	}
 
@@ -154,6 +193,7 @@
 		$str .=  "</div>";
 		return $str;
 	}
+
 	function admin_addmenu_main(){
 		$str = "";
 		$result = sql_getall("SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid AND menu.parentid = 0 ORDER BY menu.seq");
@@ -173,10 +213,11 @@
 		else{
 			for($i=0;$i<$n;$i++){
 				$str .= "<tr>";
-				$str .= "<td class='td-main'><a href='#'>".$result[$i]['menu_th']."</a></td>";
+				$str .= "<td class='td-main'><a href='?menus=addmenu&type=edit&menuid=".$result[$i]['menuid']."'>".$result[$i]['menu_th']."</a></td>";
 				$str .= "<td>";
 				if($i>=0 && $i+1<$n){
-					$str .= "DOWN";
+					//$str .= "DOWN";
+					$str .= "<a href='?controller=addmenu&mode=down&menuid=".$result[$i]['menuid']."&parentid=0&seq=".$i."'>DOWN</a>";
 				}
 				if($i>0 && $i-1<$n){
 					$str .= "<a href='?controller=addmenu&mode=up&menuid=".$result[$i]['menuid']."&parentid=0&seq=".$i."'>UP</a>";
@@ -199,11 +240,12 @@
 						$str .= "<tr>";
 						$str .= "<td class='td-child'><a href='#'>".$parentdata[$j]['menu_th']."</a></td>";
 						$str .= "<td>";
-						if($j>=0 && $j+1<$n){
+						if($j>=0 && $j<$n){
 							$str .= "DOWN";
 						}
 						if($j>0 && $j-1<$n){
-							$str .= "UP";
+							$str .= "<a href='?controller=addmenu&mode=up&menuid=".$parentdata[$j]['menuid']."&parentid=".$parentid."&seq=".$j."'>UP</a>";
+							//$str .= "UP";
 						}
 						$str .= "</td>";
 						if($parentdata[$j]['visible']==0){

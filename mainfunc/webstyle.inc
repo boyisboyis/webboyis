@@ -3,6 +3,7 @@
 	function style_construct($head,$body){
 		$str = "<html>";
 		$str .= "<head>";
+		$str .= web_meta_tags();
 		$str .= link_style('css/main.css');
 		$str .= "</head>";
 		$str .= "<body>";
@@ -15,6 +16,14 @@
 	function style_header(){
 		$str = "<div id='header-wrap'>";
 		$str .= "<div id='h-box'>";
+		$str .= "<div id='h-box-logo'>";
+		$str .= "</div>";
+		$str .= "<div  id='h-box-title'>";
+		$str .= "<h2>BOYIS</h2>";
+		$str .= "</div>";
+		$str .= "<div  id='h-box-description'>";
+		$str .= "<span>description</span>";
+		$str .= "</div>";
 		$str .= "</div>";
 		$str .= "</div>";
 		return $str;
@@ -64,6 +73,17 @@
 			}
 		}
 		$str .= "</ul>";
+		return $str;
+	}
+
+	function web_meta_tags(){
+		$str = "";
+		$str .= meta_tags(
+			array(
+				"name" => "viewport",
+				"content" => "'width=device-width, initial-scale=1, maximum-scale=1'"
+			)
+		);
 		return $str;
 	}
 
