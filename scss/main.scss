@@ -1,28 +1,50 @@
 @font-face{
-	font-family: fontDef;
-	src : url(Track.otf);
+	font-family: fontTrack;
+	src : url(../font/Track.otf);
+}
+
+@font-face{
+	font-family: fontWaffle;
+	src : url(../font/Waffle_Regular.otf);
 }
 
 *{
 	margin:0;
 	padding:0;
-
+	font-size: 16px;
+	font-family: fontWaffle;
 }
 
 #header-wrap{
-	height: 180px;
+	height: 230px;
+	padding-top: 20px;
 	#h-box{
 		height: 100%;
 		text-align: center;
-		padding-top: 20px;
 		#h-box-logo{
 			border: 1px solid #bdc3c7;
 			overflow: hidden;
-			height: 100px;
-			width: 100px;
 			border-radius: 100%;
 			margin: 0 auto;
 		}
+	}
+}
+
+#content-menu-left{
+	background: #ecf0f1;
+	.list-parent{
+		/*display: none;*/
+	}
+	li{
+		list-style: none;
+		a{
+			font-size: 150%;
+			text-decoration: none;
+		}
+	}
+
+	.list-main{
+		margin-left: 30px;
 	}
 }
 
@@ -30,14 +52,43 @@
 	#h-box{
 		width: 920px;
 		margin: 0 auto;
+		#h-box-logo{
+			height: 100px;
+			width: 100px;
+		}
+		h2, span{
+			font-size: 300%;
+		}
+	}
+
+	#content-menu{
+		width: 920px;
+		margin: 0 auto;
+		#content-menu-left{
+			width: 20%;
+			display: inline-block;
+		}
+
+		#content-menu-center{
+			width: 80%;
+			display: inline-block;
+		}
 	}
 }
 
-h2{
-	font-family: fontDef;
-}
 @media all and (max-width: 920px){
 	#h-box{
+		width: 100%;
+		#h-box-logo{
+			height: 80px;
+			width: 80px;
+		}
+		h2, span{
+			font-size: 200%;
+		}
+	}
+
+	#content-menu{
 		width: 100%;
 	}
 }
