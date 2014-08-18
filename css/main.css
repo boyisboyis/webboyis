@@ -14,11 +14,9 @@
 }
 
 #header-wrap {
-  height: 230px;
   padding-top: 20px;
 }
 #header-wrap #h-box {
-  height: 100%;
   text-align: center;
 }
 #header-wrap #h-box #h-box-logo {
@@ -55,8 +53,11 @@
     height: 100px;
     width: 100px;
   }
-  #h-box h2, #h-box span {
+  #h-box h2 {
     font-size: 300%;
+  }
+  #h-box span {
+    font-size: 200%;
   }
 
   #content-menu {
@@ -68,7 +69,16 @@
     display: inline-block;
   }
   #content-menu #content-menu-left .list-main {
-    margin: 20px 0 20px 30px;
+    border-left: 4px solid #2ecc71;
+    padding: 20px 0;
+  }
+  #content-menu #content-menu-left .list-h a, #content-menu #content-menu-left .list-p a {
+    display: block;
+    padding: 5px;
+  }
+  #content-menu #content-menu-left .list-h a:hover, #content-menu #content-menu-left .list-p a:hover {
+    background: #2ecc71;
+    color: #FFFFFF;
   }
   #content-menu #content-menu-center {
     width: 80%;
@@ -90,7 +100,18 @@
   #content-menu {
     width: 100%;
   }
+
+  .list-main .list-h, .list-main .list-p {
+    border-bottom: 3px solid #2ecc71;
+  }
+  .list-main .list-h a, .list-main .list-p a {
+    padding: 5px 5px 2px 20px;
+    display: block;
+  }
+  .list-main .list-p a {
+    padding-left: 40px;
+  }
 }
-.menu-left-parent {
+.list-p {
   padding-left: 10px;
 }

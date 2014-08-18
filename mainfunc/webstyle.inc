@@ -63,13 +63,13 @@
 		$str = "";
 		$str .= "<ul class='list-main'>";
 		for($i=0;$i<$n;$i++){
-			$str .= "<li><a href='".$data_use[$i]['link']."'>".$data_use[$i]['name']."</a></li>";
+			$str .= "<li class='list-h'><a href='".$data_use[$i]['link']."'>".$data_use[$i]['name']."</a></li>";
 			if(isset($data_use[$i]['parent'])){
 				$data_parent = $data_use[$i]['parent'];
 				$o = count($data_parent);
 				$str .= "<ul class='list-parent'>";
 				for($j=0;$j<$o;$j++){
-					$str .= "<li class='menu-left-parent'><a href='".$data_parent[$j]['link']."'>".$data_parent[$j]['name']."</a></li>";
+					$str .= "<li class='list-p'><a href='".$data_parent[$j]['link']."'>".$data_parent[$j]['name']."</a></li>";
 				}
 				$str .= "</ul>";
 			}
@@ -85,7 +85,15 @@
 				"name" => "viewport",
 				"content" => "'width=device-width, initial-scale=1, maximum-scale=1'"
 			)
+		).
+		meta_tags(
+			array(
+				"http-equiv" => "content-type",
+				"content" => "text/html",
+				"charset" => "utf-8"
+			)
 		);
+		//<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		return $str;
 	}
 

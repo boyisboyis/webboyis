@@ -1,3 +1,5 @@
+$border-color-list : #2ecc71;
+
 @font-face{
 	font-family: fontTrack;
 	src : url(../font/Track.otf);
@@ -15,11 +17,9 @@
 	font-family: fontWaffle;
 }
 
-#header-wrap{
-	height: 230px;
+#header-wrap{	
 	padding-top: 20px;
 	#h-box{
-		height: 100%;
 		text-align: center;
 		#h-box-logo{
 			border: 1px solid #bdc3c7;
@@ -56,8 +56,11 @@
 			height: 100px;
 			width: 100px;
 		}
-		h2, span{
+		h2{
 			font-size: 300%;
+		}
+		span{
+			font-size: 200%;
 		}
 	}
 
@@ -68,7 +71,18 @@
 			width: 20%;
 			display: inline-block;
 			.list-main{
-				margin: 20px 0 20px 30px;
+				border-left: 4px solid #2ecc71;
+				padding: 20px 0;
+			}
+			.list-h, .list-p{
+				a{
+					display: block;
+					padding: 5px;
+					&:hover{
+						background: #2ecc71;
+						color: #FFFFFF;
+					}
+				}
 			}
 		}
 
@@ -94,8 +108,22 @@
 	#content-menu{
 		width: 100%;
 	}
+	.list-main{
+		.list-h, .list-p{
+			border-bottom: 3px solid $border-color-list;
+			a{
+				padding: 5px 5px 2px 20px;
+				display: block;
+			}
+		}
+		.list-p{
+			a{
+				padding-left: 40px;
+			}
+		}
+	}
 }
 
-.menu-left-parent{
+.list-p{
 	padding-left: 10px;
 }
