@@ -44,9 +44,9 @@
   color: #3498db;
 }
 
-@media all and (min-width: 920px) {
+@media all and (min-width: 940px) {
   #h-box {
-    width: 920px;
+    width: 940px;
     margin: 0 auto;
   }
   #h-box #h-box-logo {
@@ -61,7 +61,7 @@
   }
 
   #content-menu {
-    width: 920px;
+    width: 940px;
     margin: 0 auto;
   }
   #content-menu #content-menu-left {
@@ -85,7 +85,11 @@
     display: inline-block;
   }
 }
-@media all and (max-width: 920px) {
+@media all and (max-width: 940px) {
+  #header-wrap {
+    padding-top: 35px;
+  }
+
   #h-box {
     width: 100%;
   }
@@ -101,6 +105,9 @@
     width: 100%;
   }
 
+  .list-main {
+    display: none;
+  }
   .list-main .list-h, .list-main .list-p {
     border-bottom: 3px solid #2ecc71;
   }
@@ -110,6 +117,15 @@
   }
   .list-main .list-p a {
     padding-left: 40px;
+  }
+
+  #content-menu-left {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 30px;
+    background: gray;
   }
 }
 .list-p {

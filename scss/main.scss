@@ -48,9 +48,9 @@ $border-color-list : #2ecc71;
 	}
 }
 
-@media all and (min-width: 920px){
+@media all and (min-width: 940px){
 	#h-box{
-		width: 920px;
+		width: 940px;
 		margin: 0 auto;
 		#h-box-logo{
 			height: 100px;
@@ -65,7 +65,7 @@ $border-color-list : #2ecc71;
 	}
 
 	#content-menu{
-		width: 920px;
+		width: 940px;
 		margin: 0 auto;
 		#content-menu-left{
 			width: 20%;
@@ -93,7 +93,10 @@ $border-color-list : #2ecc71;
 	}
 }
 
-@media all and (max-width: 920px){
+@media all and (max-width: 940px){
+	#header-wrap{
+		padding-top: 35px;
+	}
 	#h-box{
 		width: 100%;
 		#h-box-logo{
@@ -109,6 +112,7 @@ $border-color-list : #2ecc71;
 		width: 100%;
 	}
 	.list-main{
+		display: none;
 		.list-h, .list-p{
 			border-bottom: 3px solid $border-color-list;
 			a{
@@ -121,6 +125,15 @@ $border-color-list : #2ecc71;
 				padding-left: 40px;
 			}
 		}
+	}
+
+	#content-menu-left{
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+		height: 30px;
+		background: gray;
 	}
 }
 
