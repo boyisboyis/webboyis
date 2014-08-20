@@ -1,5 +1,10 @@
 $border-color-list : #2ecc71;
 
+@import 'grid';
+@import 'nav';
+@import 'image';
+@import 'prefix';
+
 @font-face{
 	font-family: fontTrack;
 	src : url(../font/Track.otf);
@@ -17,24 +22,52 @@ $border-color-list : #2ecc71;
 	font-family: fontWaffle;
 }
 
+
 #header-wrap{	
-	padding-top: 20px;
 	#h-box{
+		padding-top: 10px;
 		text-align: center;
 		#h-box-logo{
 			border: 1px solid #bdc3c7;
 			overflow: hidden;
 			border-radius: 100%;
 			margin: 0 auto;
+			height: 80px;
+			width: 80px;
 		}
+	}
+	#menu-min{
+		background: #7f8c8d;
+		height: 40px;
+	}
+	#menu-min-select{
+		display: none;
 	}
 }
 
-#content-menu-left{
-	background: #ecf0f1;
-	.list-parent{
-		/*display: none;*/
+#content-wrap{
+	width: 960px;
+	margin: 0 auto;
+}
+
+@media all and (max-width: 940px){
+	#content-menu-left{
+		display: none!important;
 	}
+}
+
+
+/*#content-menu-left{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: gray;
+	height: 40px;
+	width: 100%;
+}*/
+
+/*#content-menu-left{
+	background: #ecf0f1;
 	li{
 		list-style: none;
 		a{
@@ -46,9 +79,11 @@ $border-color-list : #2ecc71;
 			}
 		}
 	}
-}
+}*/
 
-@media all and (min-width: 940px){
+
+
+/*@media all and (min-width: 940px){
 	#h-box{
 		width: 940px;
 		margin: 0 auto;
@@ -95,7 +130,7 @@ $border-color-list : #2ecc71;
 
 @media all and (max-width: 940px){
 	#header-wrap{
-		padding-top: 35px;
+		padding-top: 50px;
 	}
 	#h-box{
 		width: 100%;
@@ -132,11 +167,14 @@ $border-color-list : #2ecc71;
 		width: 100%;
 		top: 0;
 		left: 0;
-		height: 30px;
+		height: 40px;
 		background: gray;
 	}
 }
 
+
+
+
 .list-p{
 	padding-left: 10px;
-}
+}*/

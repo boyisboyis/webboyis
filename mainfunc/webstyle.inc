@@ -1,7 +1,8 @@
 <?php
 
 	function style_construct($head,$body){
-		$str = "<html>";
+		$str = "<!DOCTYPE html>";
+		$str .= "<html>";
 		$str .= "<head>";
 		$str .= web_meta_tags();
 		$str .= link_style('css/main.css');
@@ -15,6 +16,11 @@
 
 	function style_header(){
 		$str = "<div id='header-wrap'>";
+		$str .= "<div id='menu-min' class='nav'>";
+		$str .= "</div>";
+		$str .= "<div id='menu-min-select'>";
+		$str .= style_content_menu_left();
+		$str .= "</div>";
 		$str .= "<div id='h-box'>";
 		$str .= "<div id='h-box-logo'>";
 		$str .= "</div>";
@@ -39,11 +45,11 @@
 		$str = "<div id='wrapper' class='style-mainweb'>";
 		$str .= style_header();
 		$str .= "<div id='content-wrap'>";
-		$str .= "<div id='content-menu'>";
-		$str .= "<div id='content-menu-left'>";
+		$str .= "<div id='content-menu' class='grid-col'>";
+		$str .= "<div id='content-menu-left' class='col-2'>";
 		$str .= style_content_menu_left();
 		$str .= "</div>";
-		$str .= "<div id='content-menu-center'>";
+		$str .= "<div id='content-menu-center' class='col-10'>";
 		$str .= $content;
 		$str .= "</div>";
 		/*$str .= "<div id='content-menu-right'>";
