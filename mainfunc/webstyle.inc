@@ -6,6 +6,7 @@
 		$str .= "<head>";
 		$str .= web_meta_tags();
 		$str .= link_style('css/main.css');
+		$str .= web_script();
 		$str .= "</head>";
 		$str .= "<body>";
 		$str .= $body;
@@ -17,10 +18,16 @@
 	function style_header(){
 		$str = "<div id='header-wrap'>";
 		$str .= "<div id='menu-min' class='nav'>";
-		$str .= "</div>";
-		$str .= "<div id='menu-min-select'>";
+		$str .= "<button class='nav-toggle'>";
+		$str .= "<span class='icon-nav'></span>";
+		$str .= "<span class='icon-nav'></span>";
+		$str .= "<span class='icon-nav'></span>";
+		$str .= "</button>";
 		$str .= style_content_menu_left();
 		$str .= "</div>";
+/*		$str .= "<div id='menu-min-select'>";
+		
+		$str .= "</div>";*/
 		$str .= "<div id='h-box'>";
 		$str .= "<div id='h-box-logo'>";
 		$str .= "</div>";
@@ -67,7 +74,7 @@
 		$data_use = $data[$GLOBALS['language']]['left'];
 		$n = count($data_use);
 		$str = "";
-		$str .= "<ul class='list-main'>";
+		$str .= "<ul class='list-main nav-menu'>";
 		for($i=0;$i<$n;$i++){
 			$str .= "<li class='list-h'><a href='".$data_use[$i]['link']."'>".$data_use[$i]['name']."</a></li>";
 			if(isset($data_use[$i]['parent'])){
@@ -100,6 +107,13 @@
 			)
 		);
 		//<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		return $str;
+	}
+
+	function web_script(){
+		$str = "";
+		$str .= javascript_tags("js/ext/min/jquery.min.js");
+		$str .= javascript_tags("js/min/boyis.min.js");
 		return $str;
 	}
 

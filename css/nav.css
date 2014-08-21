@@ -1,0 +1,27 @@
+.nav::before {
+  content: "";
+  background: #abb7b7;
+  height: 40px;
+  width: 100%;
+  display: block;
+}
+.nav .nav-toggle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  height: 30px;
+  padding-top: 4px;
+  border: 1px solid #abb7b7;
+  background: #abb7b7;
+  cursor: pointer;
+}
+.nav .icon-nav {
+  background: #6c7a89;
+  height: 2px;
+  width: 35px;
+  display: block;
+  margin-bottom: 6px;
+}
+.nav .nav-menu {
+  display: none;
+}

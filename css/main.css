@@ -39,6 +39,34 @@
     float: left;
   }
 }
+.nav::before {
+  content: "";
+  background: #abb7b7;
+  height: 40px;
+  width: 100%;
+  display: block;
+}
+.nav .nav-toggle {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  height: 30px;
+  padding-top: 4px;
+  border: 1px solid #abb7b7;
+  background: #abb7b7;
+  cursor: pointer;
+}
+.nav .icon-nav {
+  background: #6c7a89;
+  height: 2px;
+  width: 35px;
+  display: block;
+  margin-bottom: 6px;
+}
+.nav .nav-menu {
+  display: none;
+}
+
 @font-face {
   font-family: fontTrack;
   src: url(../font/Track.otf);
@@ -54,6 +82,12 @@
   font-family: fontWaffle;
 }
 
+#header-wrap {
+  /*#menu-min{
+  	background: #7f8c8d;
+  	height: 40px;
+  }*/
+}
 #header-wrap #h-box {
   padding-top: 10px;
   text-align: center;
@@ -65,10 +99,6 @@
   margin: 0 auto;
   height: 80px;
   width: 80px;
-}
-#header-wrap #menu-min {
-  background: #7f8c8d;
-  height: 40px;
 }
 #header-wrap #menu-min-select {
   display: none;
