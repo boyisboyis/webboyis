@@ -31,7 +31,7 @@ function check_login(){
 function login_admin(username, password){
 	$.ajax({
 		method : "POST",
-		url : "adminwebboyis/controller/login.php",
+		url : "controller/login",
 		data : {
 			"username" : username,
 			"password" : password

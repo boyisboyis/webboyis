@@ -13,6 +13,7 @@
 	$password = $_POST['password'];
 	$sql = "SELECT * FROM admin_web WHERE adminuser='{$username}'";
 	$result = sql_getall($sql);
+	
 	if(count($result)>0){
 		$pass = $result[0]['adminpass'];
 		if(check_md5(code_str($password),$pass)){

@@ -17,6 +17,7 @@
 
 	function style_header(){
 		$str = "<div id='header-wrap'>";
+		$str .= "<nav>";
 		$str .= "<div id='menu-min' class='nav'>";
 		$str .= "<button class='nav-toggle'>";
 		$str .= "<span class='icon-nav'></span>";
@@ -25,19 +26,22 @@
 		$str .= "</button>";
 		$str .= style_content_menu_left();
 		$str .= "</div>";
+		$str .= "</nav>";
 /*		$str .= "<div id='menu-min-select'>";
 		
 		$str .= "</div>";*/
+		$str .= "<header>";
 		$str .= "<div id='h-box'>";
 		$str .= "<div id='h-box-logo'>";
 		$str .= "</div>";
 		$str .= "<div  id='h-box-title'>";
-		$str .= "<h2>BOYIS</h2>";
+		$str .= "<h2>BoyI's</h2>";
 		$str .= "</div>";
 		$str .= "<div  id='h-box-description'>";
-		$str .= "<span>description</span>";
+		$str .= "<h4>description</h4>";
 		$str .= "</div>";
 		$str .= "</div>";
+		$str .= "<header>";
 		$str .= "</div>";
 		return $str;
 	}
@@ -76,13 +80,13 @@
 		$str = "";
 		$str .= "<ul class='list-main nav-menu'>";
 		for($i=0;$i<$n;$i++){
-			$str .= "<li class='list-h'><a href='".$data_use[$i]['link']."'>".$data_use[$i]['name']."</a></li>";
+			$str .= "<li class='nav-list-h'><a href='".$data_use[$i]['link']."'>".$data_use[$i]['name']."</a></li>";
 			if(isset($data_use[$i]['parent'])){
 				$data_parent = $data_use[$i]['parent'];
 				$o = count($data_parent);
-				$str .= "<ul class='list-parent'>";
+				$str .= "<ul class='nav-list-parent'>";
 				for($j=0;$j<$o;$j++){
-					$str .= "<li class='list-p'><a href='".$data_parent[$j]['link']."'>".$data_parent[$j]['name']."</a></li>";
+					$str .= "<li class='nav-list-p'><a href='".$data_parent[$j]['link']."'>".$data_parent[$j]['name']."</a></li>";
 				}
 				$str .= "</ul>";
 			}
@@ -114,6 +118,7 @@
 		$str = "";
 		$str .= javascript_tags("js/ext/min/jquery.min.js");
 		$str .= javascript_tags("js/min/boyis.min.js");
+		$str .= javascript_tags("js/min/main.min.js");
 		return $str;
 	}
 

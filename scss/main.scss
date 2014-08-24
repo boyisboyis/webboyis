@@ -1,4 +1,6 @@
-$border-color-list : #2ecc71;
+$border-right-color-list : #27ae60;
+$bg-color-left : #2ecc71;
+$bg-color-left-hover : #27ae60;
 
 @import 'grid';
 @import 'nav';
@@ -12,14 +14,20 @@ $border-color-list : #2ecc71;
 
 @font-face{
 	font-family: fontWaffle;
-	src : url(../font/Waffle_Regular.otf);
+	src : url(../font/Waffle_Light.otf);
+}
+
+@font-face{
+	font-family: fontBangna;
+	src : url(../font/WDB_Bangna.ttf);
 }
 
 *{
 	margin:0;
 	padding:0;
 	font-size: 16px;
-	font-family: fontWaffle;
+	font-family: fontBangna;
+	background-color: #ecf0f1;
 }
 
 
@@ -32,29 +40,92 @@ $border-color-list : #2ecc71;
 			overflow: hidden;
 			border-radius: 100%;
 			margin: 0 auto;
-			height: 80px;
-			width: 80px;
+			background: #FFFFFF;
 		}
-	}
-	/*#menu-min{
-		background: #7f8c8d;
-		height: 40px;
-	}*/
-	#menu-min-select{
-		display: none;
+		#h-box-title{
+			h2{
+				font-size: 150%;
+			}
+		}
 	}
 }
 
 #content-wrap{
 	width: 960px;
 	margin: 0 auto;
+	margin-top: 10px;
+	#content-menu-left{
+		.list-main{
+			border-left: 3px solid $border-right-color-list;
+		}
+		li{
+			list-style: none;
+			a{
+				font-size: 100%;
+				color: #FFFFFF;
+				display: block;
+				padding: 10px;
+				background: $bg-color-left;
+				text-decoration: none;
+				&:hover{
+					background:$bg-color-left-hover;
+				}
+			}
+		}
+		.nav-list-p{
+			a{
+				padding-left: 20px;
+			}
+		}
+	}
+	#content-menu-center{
+		height: 100px;
+		#content-body{
+			background: #FFFFFF;
+			border-radius: 5px;
+			height: 100%;
+		}
+	}
 }
 
-@media all and (max-width: 940px){
+@media all and (max-width: 960px){
+	#content-wrap{
+		width: 100%;
+	}
+	#h-box{
+		#h-box-logo{
+			width: 80px;
+			height: 80px;
+		}
+	}
+	#content-menu-left{
+		display: none;
+	}
+}
+
+@media all and (min-width: 960px){
+	#h-box{
+		#h-box-logo{
+			width: 120px;
+			height: 120px;
+		}
+	}
+	#menu-min{
+		display: none!important;
+	}
+	#content-menu-center{
+		#content-body{
+			margin-left: 20px;
+		}
+	}
+}
+
+/*@media all and (max-width: 940px){
+	#menu-
 	#content-menu-left{
 		display: none!important;
 	}
-}
+}*/
 
 
 /*#content-menu-left{
