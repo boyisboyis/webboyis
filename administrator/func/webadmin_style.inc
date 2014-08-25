@@ -118,64 +118,10 @@
 
 	function wysihtml5(){
 		$str = "";
-		$str .= "<div id='wysihtml5-box'>";
-		$str .= link_style("/adminwebboyis/css/wysihtml5css");
-		$str .= javascript_tags("/adminwebboyis/javascript/wysihtml5/parser_rules");
-		$str .= javascript_tags("/adminwebboyis/javascript/wysihtml5/wysihtml5");
-		$str .= "<div id='wysihtml5-editor-toolbar'>";
-		$str .= "<div id='box-wysihtml5'>";
-		$str .= "<ul class='commands'>";
-		$str .= "<li data-wysihtml5-command='bold' title='Make text bold (CTRL + B)'' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='italic' title='Make text italic (CTRL + I)' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='insertUnorderedList' title='Insert an unordered list' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='insertOrderedList' title='Insert an ordered list' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='createLink' title='Insert a link' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='insertImage' title='Insert an image' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1' title='Insert headline 1' class='command'></li>";
-        $str .= "<li data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2' title='Insert headline 2' class='command'></li>";
-        $str .= "<li data-wysihtml5-command-group='foreColor' class='fore-color' title='Color the selected text' class='command'>";
-        $str .= "<ul>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='silver'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='gray'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='maroon'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='red'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='purple'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='green'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='olive'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='navy'></li>";
-        $str .= "<li data-wysihtml5-command='foreColor' data-wysihtml5-command-value='blue'></li>";
-        $str .= "</ul>";
-        $str .= "</li>";
-        $str .= "<li data-wysihtml5-command='insertSpeech' title='Insert speech' class='command'></li>";
-        $str .= "<li data-wysihtml5-action='change_view' title='Show HTML' class='action'></li>";
-		$str .= "</ul>";
-		$str .= "</div>";
-		$str .= "<div data-wysihtml5-dialog='createLink' style='display: none;'>";
-        $str .= "<label>";
-        $str .= "Link:";
-        $str .= "<input data-wysihtml5-dialog-field='href' value='http://'>";
-        $str .= "</label>";
-        $str .= "<a data-wysihtml5-dialog-action='save'>OK</a>&nbsp;<a data-wysihtml5-dialog-action='cancel'>Cancel</a>";
-      	$str .= "</div>";
-      	$str .= "<div data-wysihtml5-dialog='insertImage' style='display: none;'>";
-        $str .= "<label>";
-        $str .= "Image:";
-        $str .= "<input data-wysihtml5-dialog-field='src' value='http://'>";
-        $str .= "</label>";
-        $str .= "<a data-wysihtml5-dialog-action='save'>OK</a>&nbsp;<a data-wysihtml5-dialog-action='cancel'>Cancel</a>";
-      	$str .= "</div>";
-		$str .= "</div>";
-		$str .= "<div id='wysihtml5-textarea'><textarea id='wysihtml5-editor' spellcheck='false' wrap='off' autofocus placeholder='Enter something ...'></textarea></div>";
-		$str .= "<script>var editor = new wysihtml5.Editor('wysihtml5-editor', {toolbar: 'wysihtml5-editor-toolbar',
-        stylesheets: ['css/wysihtml5editorcss'],
-        parserRules: wysihtml5ParserRules
-      });   
-	editor.on('load', function() {
-        var composer = editor.composer;
-        composer.selection.selectNode(editor.composer.element.querySelector('h1'));
-      });
-    </script>";
-    	$str .= "</div>";
+		$str .= link_style("css/editorcss");
+    	$str .= javascript_tags("javascript/editor");
+		$str .= "<textarea name='textarea' class='jqte-test'></textarea>";
+		$str .= "<script>$('.jqte-test').jqte();var jqteStatus = true;$('.status').click(function(){jqteStatus = jqteStatus ? false : true;$('.jqte-test').jqte({'status' : jqteStatus})});</script>";
 		return $str;
 	}
 
