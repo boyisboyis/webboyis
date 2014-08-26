@@ -109,7 +109,13 @@
 				$type = $arr_etc['type'];
 			}
 			$str .= "<div id='add-topic'>";
-			$str .= wysihtml5();
+			$str .= admin_topic_header();
+			if($type == "add"){
+				$str .= admin_topic_addnew();
+			}
+			else{
+
+			}
 			$str .= "</div>";
 		}
 		$str .= "</div>";
@@ -125,9 +131,24 @@
 		return $str;
 	}
 
-	function admin_addmenu_topic(){
+	function admin_topic_addnew(){
 		$str = "";
-		$str .= "test";
+		$str .= "<div id='add-new-topic'>";
+		$str .= "<form method='POST' action='?controller=topic&mode=add'>";
+		$str .= "<div>";
+		$str .= "Subject : ";
+		$str .= "<input type='text' name='subject'>";
+		$str .= "</div>";
+		$str .= "<div>";
+		$str .= "Main : ";
+		$str .= "<select name='menuparent'>";
+		$str .= get_topic_ok_addmenu();
+		$str .= "</select>";
+		$str .= "</div>";
+		$str .= wysihtml5();
+		$str .= "<input type='submit' value='submit'>";
+		$str .= "</form>";
+		$str .= "</div>";
 		return $str;
 	}
 
@@ -203,6 +224,17 @@
 		$str .= "<table>";
 		$str .= "</form>";
 		$str .= "</div>";
+		return $str;
+	}
+
+	function admin_topic_header(){
+		$str = "";
+		$str .=  "<div id='add-menu-header'>";
+		$str .= "<div id='add-menu-h-left'>";
+		$str .= "<a href='?menus=topic&type=add' class='alinkhead'>ADD</a>";
+		//$str .= "<a href='?controller=addmenu&mode=gen' class='alinkhead'>GEN MENU</a>";
+		$str .= "</div>";
+		$str .=  "</div>";
 		return $str;
 	}
 
@@ -320,4 +352,16 @@
 		return $str;
 	}
 
+	function get_topic_ok_addmenu(){
+		$str = "";
+		$sql = "SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid AND menu.parentid > 0 AND menu.topicadd = 1";
+		$result = sql_getall($sql);
+		if(count($result) > 0){
+			$n = count($result);
+			for($i=0; $i<$n; $i++){
+				$str .= "<option value='".$result[$i]['menuid']."'>".$result[$i]['menu_th']."</option>";
+			}
+		}
+		return $str;
+	}
 ?>

@@ -29,6 +29,10 @@
 				require_once("controller/addmenu.php");
 				die();
 			}
+			else if($controller == 'topic'){
+				require_once("controller/topic.php");
+				die();
+			}
 		}
 		
 	}

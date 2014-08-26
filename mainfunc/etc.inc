@@ -109,7 +109,10 @@ function create_file_json($arr, $path, $name){
 	else{
 		fclose($file);
 		return "{'status' : 'error', 'code' : 1, 'message' : 'locking error'}";
-	}
+	}	
+}
+
+function write_file(){
 	
 }
 
