@@ -113,8 +113,11 @@
 			if($type == "add"){
 				$str .= admin_topic_addnew();
 			}
+			else if($type == 'update'){
+				$str .= admin_topic_update();
+			}
 			else{
-
+				$str .= admin_topic_main();
 			}
 			$str .= "</div>";
 		}
@@ -122,12 +125,89 @@
 		return $str;
 	}
 
-	function wysihtml5(){
+	function wysihtml5($text=""){
 		$str = "";
 		$str .= link_style("css/editorcss");
     	$str .= javascript_tags("javascript/editor");
-		$str .= "<textarea name='textarea' class='jqte-test'></textarea>";
+		$str .= "<textarea name='textarea' class='jqte-test'>{$text}</textarea>";
 		$str .= "<script>$('.jqte-test').jqte();var jqteStatus = true;$('.status').click(function(){jqteStatus = jqteStatus ? false : true;$('.jqte-test').jqte({'status' : jqteStatus})});</script>";
+		return $str;
+	}
+
+	function admin_topic_update(){
+		if(!isset($_GET['topicid']) || trim($_GET['topicid'])=='' || !is_numeric($_GET['topicid'])){
+			go_path("/");
+		}
+		$topicid = trim($_GET['topicid']);
+		$sql = "SELECT * FROM topic WHERE topicid=".$topicid;
+		$result = sql_getall($sql);
+		if(count($result) > 0){
+			$data = con_json_to_array(get_json_data("data/topic/".$result[0]['menuid'].'/',$result[0]['filename'].'.json'));
+			$str = "";
+			$str .= "<div id='add-new-topic'>";
+			$str .= "<form method='POST' action='?controller=topic&mode=update'>";
+			$str .= "<div>";
+			$str .= "Subject : ";
+			$str .= "<input type='text' name='subject' value='{$data['subject']}'>";
+			$str .= "</div>";
+			$str .= "<div>";
+			$str .= "Main : ";
+			$str .= "<select name='menuparent'>";
+			$str .= get_topic_ok_addmenu($result[0]['menuid']);
+			$str .= "</select>";
+			$str .= "</div>";
+			$str .= "<div>";
+			$str .= "Main : ";
+			$str .= "<select name='shownow'>";
+			if($result[0]['showtopic']==1){
+				$str .= "<option value='noshow'>no show</option>";
+				$str .= "<option value='show' selected='selected'>show</option>";
+			}
+			else{
+				$str .= "<option value='noshow' selected='selected'>no show</option>";
+				$str .= "<option value='show'>show</option>";
+			}			
+			$str .= "</select>";
+			$str .= "</div>";
+			$str .= wysihtml5($data['text']);
+			$str .= "<input type='hidden' name='topicid' value=$topicid>";
+			$str .= "<input type='submit' value='submit'>";
+			$str .= "</form>";
+			$str .= "</div>";
+		}
+		else{
+		}
+		return $str;
+		print_r($result);
+	}
+
+	function admin_topic_main(){
+		$str = "";
+		$str .= "<div id='show-topic'>";
+		$str .= "<table>";
+		$str .= "<tr><th>No.</th><th>menu</th><th>Subject</th><th>Show</th><th>create</th><th>Last update</th><th>Date show</th><tr>";
+		$sql = "SELECT * FROM topic AS t LEFT JOIN (SELECT tm.* FROM menu as m LEFT JOIN translate_menu AS tm ON m.menuid = tm.menuid) AS a ON t.menuid=a.menuid ORDER BY t.topicid";
+		$result = sql_getall($sql);
+		$n = count($result);
+		for($i=0;$i<$n;$i++){
+			$str .= "<tr>";
+			$str .= "<td>".($i+1)."</td>";
+			$str .= "<td>".$result[$i]['menu_th']."</td>";
+			$data = con_json_to_array(get_json_data("data/topic/".$result[$i]['menuid'].'/',$result[$i]['filename'].'.json'));
+			$str .= "<td><a href='?menus=topic&type=update&topicid=".$result[$i]['topicid']."'>".$data['subject']."</a></td>";
+			if($result[$i]['showtopic']==1){
+				$str .= "<td><a href='#'>show</a></td>";
+			}
+			else{
+				$str .= "<td><a href='#'>no show</a></td>";
+			}
+			$str .= "<td>".$result[$i]['datecreate']."</td>";
+			$str .= "<td>".$result[$i]['dateupdate']."</td>";
+			$str .= "<td>".$result[$i]['dateshow']."</td>";
+			$str .= "</tr>";
+		}
+		$str .= "</table>";
+		$str .= "</div>";
 		return $str;
 	}
 
@@ -143,6 +223,13 @@
 		$str .= "Main : ";
 		$str .= "<select name='menuparent'>";
 		$str .= get_topic_ok_addmenu();
+		$str .= "</select>";
+		$str .= "</div>";
+		$str .= "<div>";
+		$str .= "Main : ";
+		$str .= "<select name='shownow'>";
+		$str .= "<option value='noshow'>no show</option>";
+		$str .= "<option value='show'>show</option>";
 		$str .= "</select>";
 		$str .= "</div>";
 		$str .= wysihtml5();
@@ -332,7 +419,6 @@
 		return $str;
 	}
 
-
 	function javascript_login_admin(){
 		$str = "";
 		$str .= javascript_tags("/adminwebboyis/javascript/admin_login.js");
@@ -352,16 +438,22 @@
 		return $str;
 	}
 
-	function get_topic_ok_addmenu(){
+	function get_topic_ok_addmenu($idselect=""){
 		$str = "";
 		$sql = "SELECT * FROM menu, translate_menu WHERE menu.menuid = translate_menu.menuid AND menu.parentid > 0 AND menu.topicadd = 1";
 		$result = sql_getall($sql);
 		if(count($result) > 0){
 			$n = count($result);
 			for($i=0; $i<$n; $i++){
-				$str .= "<option value='".$result[$i]['menuid']."'>".$result[$i]['menu_th']."</option>";
+				if($idselect!="" && is_numeric($idselect) && $idselect>0 && $idselect==$result[$i]['menuid']){
+					$str .= "<option value='".$result[$i]['menuid']."' selected='selected'>".$result[$i]['menu_th']."</option>";
+				}
+				else{
+					$str .= "<option value='".$result[$i]['menuid']."'>".$result[$i]['menu_th']."</option>";
+				}
 			}
 		}
 		return $str;
 	}
+
 ?>

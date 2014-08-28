@@ -37,6 +37,10 @@
 		return "<div style='clear:both'></div>";
 	}
 
+	function br(){
+		return "<br/>";
+	}
+
 	function javascript_tags($link){
 		$str = "";
 		if($link!=''){

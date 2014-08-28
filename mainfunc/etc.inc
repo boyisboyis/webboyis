@@ -98,6 +98,7 @@ function get_text($key){
 }
 
 function create_file_json($arr, $path, $name){
+	check_dir($path);
 	$file = fopen($path.$name.".json","w");
 	if (flock($file,LOCK_EX)){
 		fwrite($file,json_encode($arr));
@@ -112,13 +113,21 @@ function create_file_json($arr, $path, $name){
 	}	
 }
 
-function write_file(){
-	
+function check_dir($path){
+	if (!file_exists($path)) {
+		create_dir($path);
+	}
+}
+
+function create_dir($path){
+	if(mkdir($path, 0777)){
+		return true;
+	}
+	return false;
 }
 
 function gen_json_pattern($arr = array()){
 	if(is_array($arr) && count($arr) > 0){
-		//echo json_encode($arr);
 		create_file_json($arr, "data/","menuleft");
 	}
 }

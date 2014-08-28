@@ -2,7 +2,7 @@
 
 	function go_path($path){
 		if($path=="" || $path=="/"){
-			header("Location:http://localhost/webboyis/");
+			header("Location:http://localhost/");
 		}
 		else{
 			header("Location:".$path);
