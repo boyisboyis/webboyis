@@ -1,7 +1,0 @@
-<?php
-
-	$lang = array(
-		"u_o_p_in" => "Username or Password incorrect"
-	);
-
-?>
