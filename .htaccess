@@ -9,6 +9,8 @@ RewriteRule ^(.*) travals.php
 
 Options -Indexes
 
+php_value auto_prepend_file include.php
+
 
 ErrorDocument 403 index.php
 ErrorDocument 404 /errormessages/404.php
