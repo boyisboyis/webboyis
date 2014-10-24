@@ -1,6 +1,6 @@
 <?php
 
-	class path{
+	class Path{
 
 		public static function getpath(){
 			$request_uri = $_SERVER['REQUEST_URI'];
@@ -19,8 +19,10 @@
 			return $arr;
 		}
 
-		public static function requestpath($path){
-
+		public static function requestpath($path="home"){
+			if($path=='home'){
+				require_once 'home.php';
+			}
 		}
 
 	}

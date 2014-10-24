@@ -1,6 +1,7 @@
 <?php
 
 	$path = Etc::getpath();
+	$content = new Path();
 	$db = new Db();
 	//$db->test();
 	//echo Html::br();
@@ -9,6 +10,7 @@
 	}
 	else{
 		// main page
+		$content->requestpath();
 	}
 
 ?>
