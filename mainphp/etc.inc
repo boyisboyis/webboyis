@@ -14,20 +14,14 @@
 			$n = count($ex);
 			$arr = array();
 			for($i=0;$i<$n;$i++){
-				if($ex[$i]!="" && $ex[$i]!=null){
+				if($ex[$i]!="" && !is_null($ex[$i])){
 					$arr[] = $ex[$i];
 				}
 			}
-			//echo $request_uri;
-			//$ex = array_filter(explode("/", $request_uri));
-			//self::show_arr($arr);
 			if(count($arr) > 0){
-				//$last = $ex[count($ex)-1];
 				$re = explode('?', $arr[count($arr)-1]);
 				$arr[count($arr)-1] = $re[0];
-				//$ex[count($ex)-1];
 			}
-			//self::show_arr($arr);
 			return $arr;
 		}
 
