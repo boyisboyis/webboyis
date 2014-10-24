@@ -8,6 +8,6 @@
 		<title>BoyI's</title>
 	</head>
 	<body>
-		
+		<?php echo "home";?>
 	</body>
 </html>
