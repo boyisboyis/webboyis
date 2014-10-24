@@ -19,6 +19,11 @@
 			return $arr;
 		}
 
+		public static function getbasepath(){
+			$http = isset($_SERVER['HTTPS'])?"https://":"http://";
+			return $http.$_SERVER["HTTP_HOST"];
+		}
+
 		public static function requestpath($path="home"){
 			if($path=='home'){
 				require_once 'home.php';
