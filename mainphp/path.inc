@@ -19,6 +19,10 @@
 			return $arr;
 		}
 
+		public static function requestpath($path){
+
+		}
+
 	}
 
 ?>

@@ -25,10 +25,6 @@
 			return $arr;
 		}
 
-		public static function requestpath($path){
-
-		}
-
 		public static function show_arr($arr){
 			echo "<pre>";
 			print_r($arr);
