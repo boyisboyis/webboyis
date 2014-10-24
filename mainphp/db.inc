@@ -40,6 +40,7 @@
 		}
 
 		function disconnect(){
+			mysqli_close($this->connect);
 			//echo "disconnect";
 		}
 
