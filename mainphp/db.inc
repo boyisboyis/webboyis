@@ -32,7 +32,11 @@
 		}
 
 		function get_one($sql){
+			return ;
+		}
 
+		function get_all($sql){
+			return ;
 		}
 
 		function disconnect(){
