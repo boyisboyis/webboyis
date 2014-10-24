@@ -31,6 +31,17 @@
 			echo "</pre>";
 		}
 
+		public static function level_access(){
+			if(self::login()){
+				return true;
+			}
+			return false;
+		}
+
+		public static function login(){
+			return (isset($_SESSION['member']) && $_SESSION['member'])?true:false;
+		}
+
 	}
 
 ?>

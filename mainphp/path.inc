@@ -26,6 +26,9 @@
 			else if($path=='boyisadmin'){
 				require_once 'administrator/adminhome.php';
 			}
+			else if($path=='boyisadmin_login'){
+				require_once 'administrator/adminlogin.php';
+			}
 			else{
 				require_once 'home.php';
 			}

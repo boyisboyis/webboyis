@@ -8,7 +8,12 @@
 	if(count($path)>0){
 		// travals page
 		if(isset($path[0]) && $path[0]=='boyisadmin'){
-			$content->requestpath("boyisadmin");
+			if(Etc::login()){
+				$content->requestpath("boyisadmin");
+			}
+			else{
+				$content->requestpath("boyisadmin_login");
+			}
 		}
 		else{
 			$content->requestpath();
