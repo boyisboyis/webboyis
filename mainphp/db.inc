@@ -27,16 +27,20 @@
 			return mysqli_connect($host, $username, $password, $db);
 		}*/
 
-		function querry($sql){
-			$result = mysqli_query($this->connect)
+		private function querry($sql){
+			return mysqli_query($this->connect, $sql);
 		}
 
-		function __destruct(){
-			self::disconnect();
+		function get_one($sql){
+
 		}
 
 		function disconnect(){
 			//echo "disconnect";
+		}
+
+		function __destruct(){
+			self::disconnect();
 		}
 
 	}
