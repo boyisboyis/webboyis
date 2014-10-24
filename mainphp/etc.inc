@@ -10,13 +10,35 @@
 
 		public static function getpath(){
 			$request_uri = $_SERVER['REQUEST_URI'];
-			echo $request_uri;
 			$ex = explode("/", $request_uri);
-			return array_filter($ex);
+			$n = count($ex);
+			$arr = array();
+			for($i=0;$i<$n;$i++){
+				if($ex[$i]!="" && $ex[$i]!=null){
+					$arr[] = $ex[$i];
+				}
+			}
+			//echo $request_uri;
+			//$ex = array_filter(explode("/", $request_uri));
+			//self::show_arr($arr);
+			if(count($arr) > 0){
+				//$last = $ex[count($ex)-1];
+				$re = explode('?', $arr[count($arr)-1]);
+				$arr[count($arr)-1] = $re[0];
+				//$ex[count($ex)-1];
+			}
+			//self::show_arr($arr);
+			return $arr;
 		}
 
 		public static function requestpath($path){
 
+		}
+
+		public static function show_arr($arr){
+			echo "<pre>";
+			print_r($arr);
+			echo "</pre>";
 		}
 
 	}
