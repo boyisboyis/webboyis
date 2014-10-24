@@ -8,14 +8,15 @@
 
 		}
 
-		public static function run(){
-			print "testetc";
-		}
-
 		public static function getpath(){
 			$request_uri = $_SERVER['REQUEST_URI'];
+			echo $request_uri;
 			$ex = explode("/", $request_uri);
 			return array_filter($ex);
+		}
+
+		public static function requestpath($path){
+
 		}
 
 	}
