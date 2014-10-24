@@ -24,7 +24,7 @@
 			return $http.$_SERVER["HTTP_HOST"];
 		}
 
-		public static function requestpath($path="home"){
+		public static function requestpath($path="home", $file=""){
 			if($path=='home'){
 				require_once 'home.php';
 			}
@@ -33,6 +33,11 @@
 			}
 			else if($path=='boyisadmin_login'){
 				require_once 'administrator/adminlogin.php';
+			}
+			else if($path=='ext'){
+				if($file=="angular"){
+					echo file_get_contents("js/ext/angular.min.js");
+				}
 			}
 			else{
 				require_once 'home.php';

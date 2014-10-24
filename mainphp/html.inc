@@ -6,6 +6,10 @@
 			return "<br/>";
 		}
 
+		function script_tag($link){
+			return "<script type=\"text/javascript\" src=".$link."></script>";
+		}
+
 	}
 
 ?>
