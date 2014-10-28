@@ -1,8 +1,8 @@
 <?php
 
-	require_once 'mainphp/etc.inc';
-	require_once 'mainphp/path.inc';
-	require_once 'mainphp/db.inc';
-	require_once 'mainphp/html.inc';
+	require_once 'controller/etc.inc';
+	require_once 'controller/path.inc';
+	require_once 'controller/db.inc';
+	require_once 'controller/html.inc';
 
 ?>
