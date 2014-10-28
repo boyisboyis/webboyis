@@ -5,7 +5,7 @@
 	//$db = new Db();
 	//$db->test();
 	//echo Html::br();
-	print_r($path);
+	//print_r($path);
 	if(count($path)>0){
 		// travals page
 		if(isset($path[0]) && $path[0]=='boyisadmin'){
@@ -16,7 +16,7 @@
 				$content->requestpath("boyisadmin_login");
 			}
 		}
-		else if(isset($path[0]) && $path[0]=='ext'){
+		else if(isset($path[0]) && ($path[0]=='js' || $path[0]=='css')){
 			//$content->requestpath("ext",$path[1]);
 		}
 		else{
