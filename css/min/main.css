@@ -4,4 +4,7 @@
   box-sizing: border-box;
 }
 
-@font-face {}
+@font-face {
+  font-family: roboto;
+  src: url(/font/roboto/Roboto-Regular.ttf);
+}
