@@ -11,6 +11,7 @@
 <html>
 	<head>
 		<title>Login Admin</title>
+		<meta charset="UTF-8">
 		<?php
 			echo $html->script_tag($basepath."/js/ext/angular.min.js", true);
 			echo $html->link_tag($basepath."/css/min/main.css");
@@ -18,7 +19,7 @@
 		?>
 	</head>
 	<body>
-		<div id="wrapper" data-ng-app=''>
+		<div id="wrapper" data-ng-app='' data-ng-controller="loginController">
 			<div id='box-login'>
 				<div>
 					<form name='loginForm' novalidate>
@@ -41,5 +42,10 @@
 				</div> 
 			</div>
 		</div>
+		<script type="text/javascript">
+		function loginController($scope, $http){
+
+		}
+		</script>
 	</body>
 </html>
