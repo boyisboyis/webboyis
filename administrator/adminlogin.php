@@ -13,22 +13,23 @@
 		<title>Login Admin</title>
 		<meta charset="UTF-8">
 		<?php
-			echo $html->script_tag($basepath."/js/ext/angular.min.js", true);
 			echo $html->link_tag($basepath."/css/min/main.css");
 			echo $html->link_tag($basepath."/css/min/mainadmin.css");
 		?>
 	</head>
 	<body>
-		<div id="wrapper" data-ng-app='' data-ng-controller="loginController">
+		<div id="wrapper" data-ng-app='login' data-ng-controller="loginController">
 			<div id='box-login'>
 				<div>
-					<form name='loginForm' novalidate>
+					<form name='loginForm' data-ng-submit="doLogin()" novalidate>
 						<div>
 							<span>Username: </span>
 							<input type="text" name="username" data-ng-model='username' required>
-							<span class='' data-ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+							<span data-ng-show="loginForm.username.$dirty && loginForm.username.$invalid && loginForm.username.$error.required">Required</span>
+							<!-- <span data-ng-show="userController.required" data-ng-controller="userController">Required</span> -->
+							<!-- <span class='' data-ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
 								<span data-ng-show="loginForm.username.$error.required">Required</span>
-							</span>
+							</span> -->
 						</div>
 						<div>
 							<span>Password: </span><input type="password" name='password' data-ng-model='password' required>
@@ -42,17 +43,22 @@
 				</div> 
 			</div>
 		</div>
+		<?php
+			echo $html->script_tag($basepath."/js/ext/angular.min.js");
+		?>
 		<script type="text/javascript">
-		function loginController($scope, $http){
-			var site = "http://localhost";
-			var page = "/boyisadmin/controller/login"
-			$scope.clickna = function(){
-				$http.get(site+page).success(function(response){
-					console.log(response)
-				});
-			}
-			//sskkk
-		}
+			var loginApp = angular.module("login",[]);
+			loginApp.controller("loginController",['$scope', function($scope){
+				$scope.username = 'test';
+			}]);
+			it("should check ng-bind", function(){
+				var nameInput = element(by.model('username'))
+				console.log(nameInput);
+				expect(element(by.binding('username')).getText()).toBe('Whirled');
+			    nameInput.clear();
+			    nameInput.sendKeys('world');
+			    expect(element(by.binding('username')).getText()).toBe('world');
+			});
 		</script>
 	</body>
 </html>

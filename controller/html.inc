@@ -8,11 +8,11 @@
 
 		function script_tag($link, $async=false){
 			$a = ($async==true)?"async=async":"";
-			return "<script type=\"text/javascript\" src=".$link." ".$a."></script>";
+			return "<script type=\"text/javascript\" src=".$link." ".$a."></script>\n";
 		}
 
 		function link_tag($link){
-			return "<link rel=\"stylesheet\" type=\"text/css\" href=".$link.">";
+			return "<link rel=\"stylesheet\" type=\"text/css\" href=".$link.">\n";
 		}
 
 	}
