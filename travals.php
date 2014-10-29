@@ -13,7 +13,13 @@
 				$content->requestpath("boyisadmin");
 			}
 			else{
-				$content->requestpath("boyisadmin_login");
+				if(isset($path[1]) && $path[1]=="controller"){
+					if(isset($path[2]) && $path[2]=='login'){
+						$content->requestController("loginadmin");
+					}
+				}else{
+					$content->requestpath("boyisadmin_login");
+				}
 			}
 		}
 		else if(isset($path[0]) && ($path[0]=='js' || $path[0]=='css')){

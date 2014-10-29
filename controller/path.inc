@@ -44,6 +44,12 @@
 			}
 		}
 
+		public static function requestController($path){
+			if($path=="loginadmin"){
+				require_once 'administrator/controller/admin_login.php';
+			}
+		}
+
 	}
 
 ?>

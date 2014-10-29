@@ -34,7 +34,7 @@
 							<span>Password: </span><input type="password" name='password' data-ng-model='password' required>
 						</div>
 						<div>
-							<button data-ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid">Login</button>
+							<button data-ng-click="clickna()" data-ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid">Login</button>
 						</div>
 					</form>
 					<!-- <p data-ng-bind='username'></p>
@@ -44,6 +44,13 @@
 		</div>
 		<script type="text/javascript">
 		function loginController($scope, $http){
+			var site = "http://localhost";
+			var page = "/boyisadmin/controller/login"
+			$scope.clickna = function(){
+				$http.get(site+page).success(function(response){
+					console.log(response)
+				});
+			}
 			//sskkk
 		}
 		</script>
