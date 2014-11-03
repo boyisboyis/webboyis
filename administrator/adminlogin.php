@@ -48,17 +48,7 @@
 		?>
 		<script type="text/javascript">
 			var loginApp = angular.module("login",[]);
-			loginApp.controller("loginController",['$scope', function($scope){
-				$scope.username = 'test';
-			}]);
-			it("should check ng-bind", function(){
-				var nameInput = element(by.model('username'))
-				console.log(nameInput);
-				expect(element(by.binding('username')).getText()).toBe('Whirled');
-			    nameInput.clear();
-			    nameInput.sendKeys('world');
-			    expect(element(by.binding('username')).getText()).toBe('world');
-			});
+			
 		</script>
 	</body>
 </html>
