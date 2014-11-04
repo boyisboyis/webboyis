@@ -5,7 +5,20 @@
 		public static function encodemain($en=null){
 			if($en==null || $en=="") return;
 			$md5 = md5($en);
+		}
 
+		public static function decodemain($de=null){
+			if($de==null || $de=="") return;
+
+		}
+
+		public static function passwordencode($en=null){
+			if($en==null || $en=="") return;
+			return md5(md5($en).":passwordcodeboyis");
+		}
+
+		public static function genuserid(){
+			return md5(time());
 		}
 
 		public static function getpath(){

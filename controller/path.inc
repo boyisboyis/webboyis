@@ -24,29 +24,33 @@
 			return $http.$_SERVER["HTTP_HOST"];
 		}
 
-		public static function requestpath($path="home", $file=""){
-			if($path=='home'){
-				require_once 'home.php';
+		public static function requestPath($path="home", $file=""){
+			$path_path = array(
+				"home" => "home.php",
+				"boyisadmin" => "administrator/adminhome.php",
+				"boyisadmin_login" => "administrator/adminlogin.php",
+			);
+			$path_ext = array(
+				"angular" => "js/ext/angular.min.js"
+			);
+			if($path == "ext" && isset($path_ext[$file])){
+				echo file_get_contents($path_ext[$file]);
 			}
-			else if($path=='boyisadmin'){
-				require_once 'administrator/adminhome.php';
-			}
-			else if($path=='boyisadmin_login'){
-				require_once 'administrator/adminlogin.php';
-			}
-			else if($path=='ext'){
-				if($file=="angular"){
-					echo file_get_contents("js/ext/angular.min.js");
-				}
+			else if($path!="" && isset($path_path[$path])){
+				require_once $path_path[$path];
 			}
 			else{
-				require_once 'home.php';
+			 	require_once $path_path['home'];
 			}
 		}
 
 		public static function requestController($path){
-			if($path=="loginadmin"){
-				require_once 'administrator/controller/admin_login.php';
+			$path_admin_controller = array(
+				"loginadmin" => "administrator/controller/admin_login.php",
+				"checkloginadmin" => "administrator/controller/admin_login.php"
+			);
+			if(isset($path_admin_controller[$path])){
+				require_once $path_admin_controller[$path];
 			}
 		}
 

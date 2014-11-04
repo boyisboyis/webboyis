@@ -28,7 +28,7 @@
 						<span>Password : </span><input type="password" name="password" data-ng-model="data.password" required="required">
 					</div>
 					<div>
-						<button name="submit" data-ng-click="checkLogin(data)" data-ng-disabled="loginForm.$invalid">Login</button>
+						<button name="submit" data-ng-click="checkLogin()" data-ng-disabled="loginForm.$invalid">Login</button>
 					</div>
 				</form>
 				<div>
@@ -41,13 +41,27 @@
 		?>
 		<script type="text/javascript">
 			var loginApp = angular.module('loginApp', []);
-			loginApp.controller('loginController', ['$scope',function($scope){
-				$scope.checkLogin = function(obj){
-					obj.ele.complete = {
+			loginApp.controller('loginController', function($scope, $http){
+				console.log($scope);
+				$scope.checkLogin = function(){
+					var url = "boyisadmin/controller/checklogin";
+					$http({
+						"method" : "POST",
+						"url" : url,
+						"data" : {username: $scope.data.username, password : $scope.data.password},
+						"headers" : {'Content-Type': 'application/x-www-form-urlencoded'}
+					}).success(function(data,status){
+						console.log(data, status);
+					})
+					
+					/*$http.post(, data).success(function(res){
+						console.log(res);
+					});*/
+					$scope.data.ele.complete = {
 						show : true
 					};
 				}
-			}]);
+			});
 			
 		</script>
 	</body>
