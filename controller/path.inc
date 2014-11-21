@@ -2,7 +2,7 @@
 
 	class Path{
 
-		public static function getpath(){
+		public function getpath(){
 			$request_uri = $_SERVER['REQUEST_URI'];
 			$ex = explode("/", $request_uri);
 			$n = count($ex);
@@ -19,12 +19,12 @@
 			return $arr;
 		}
 
-		public static function getbasepath(){
+		public function getbasepath(){
 			$http = isset($_SERVER['HTTPS'])?"https://":"http://";
 			return $http.$_SERVER["HTTP_HOST"];
 		}
 
-		public static function requestPath($path="home", $file=""){
+		public function requestPath($path="home", $file=""){
 			$path_path = array(
 				"home" => "home.php",
 				"boyisadmin" => "administrator/adminhome.php",
@@ -44,7 +44,7 @@
 			}
 		}
 
-		public static function requestController($path){
+		public function requestController($path){
 			$path_admin_controller = array(
 				"loginadmin" => "administrator/controller/admin_login.php",
 				"checkloginadmin" => "administrator/controller/admin_login.php"
@@ -52,6 +52,11 @@
 			if(isset($path_admin_controller[$path])){
 				require_once $path_admin_controller[$path];
 			}
+		}
+
+		public function requestOtherPath($path){
+			if(file_exists($path)) require_once $path;
+			return "";
 		}
 
 	}

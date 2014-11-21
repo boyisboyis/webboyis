@@ -14,10 +14,20 @@
     	echo json_encode(array("status" => "error", "desc" => "password empty"));
     	die();
     }
-    echo json_encode(array("status" => "success"));
-   /* echo $username;
-    echo $password;
-	//$username = $_POST['username'];
-	echo '[{"Name":"test"}]';*/
-
+    $sql = "SELECT auth FROM user WHERE username='".$username."' AND password='".Etc::passwordencode($password)."'";
+    $result = DB::get_all($sql);
+    if($result=="" || empty($result)){
+        echo json_encode(array("status" => "error", "desc" => "username or password is wrong!"));
+    }
+    else{
+        $data = Etc::getAuth($result[0]["auth"]);
+        if(isset($data["admin"]) && $data["admin"]==1){
+            $_SESSION['member'] = true;
+            $_SESSION["admin"] = true;
+            echo json_encode(array("status" => "success", "url" => Path::getbasepath()."/boyisadmin"));
+        }
+        else{
+            echo json_encode(array("status" => "error", "desc" => "This username can't access admin page"));
+        }
+    }
 ?>

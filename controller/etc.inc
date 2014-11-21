@@ -21,23 +21,6 @@
 			return md5(time());
 		}
 
-		public static function getpath(){
-			$request_uri = $_SERVER['REQUEST_URI'];
-			$ex = explode("/", $request_uri);
-			$n = count($ex);
-			$arr = array();
-			for($i=0;$i<$n;$i++){
-				if($ex[$i]!="" && !is_null($ex[$i])){
-					$arr[] = $ex[$i];
-				}
-			}
-			if(count($arr) > 0){
-				$re = explode('?', $arr[count($arr)-1]);
-				$arr[count($arr)-1] = $re[0];
-			}
-			return $arr;
-		}
-
 		public static function show_arr($arr){
 			echo "<pre>";
 			print_r($arr);
@@ -53,6 +36,21 @@
 
 		public static function login(){
 			return (isset($_SESSION['member']) && $_SESSION['member'])?true:false;
+		}
+
+		public static function loginadmin(){
+			return (isset($_SESSION['admin']) && $_SESSION['admin'])?true:false;
+		}
+
+		public static function getAuth($auth=""){
+			$data = explode(",", $auth);
+			if($auth=="" || count($data) <= 0) return;
+			$ret = array();
+			foreach($data as $value){
+				$e = explode(":", $value);
+				$ret[$e[0]] = $e[1];
+			} 
+			return $ret;
 		}
 
 	}

@@ -1,45 +1,21 @@
 <?php
 
-	$path = Etc::getpath();
+	$db = new DB($host, $db_name, $db_username, $db_password);
+	unset($host, $db_name, $db_username, $db_password);
 	$content = new Path();
-	$db = new Db();
-	//$db->test();
-	//echo Html::br();
-	//print_r($path);
-	echo Etc::passwordencode("123261129");
-	echo "<br/>";
-	echo Etc::genuserid();
-	if(count($path)>0){
-		// travals page
-		if(isset($path[0]) && $path[0]=='boyisadmin'){
-			if(Etc::login()){
-				$content->requestPath("boyisadmin");
-			}
-			else{
-				if(isset($path[1]) && $path[1]=="controller"){
-					if(isset($path[2])){
-						if($path[2]=='login'){
-							$content->requestController("loginadmin");
-						}
-						else if($path[2]=='checklogin'){
-							$content->requestController("checkloginadmin");
-						}
-					}
-				}else{
-					$content->requestPath("boyisadmin_login");
-				}
-			}
-		}
-		else if(isset($path[0]) && ($path[0]=='js' || $path[0]=='css')){
-			//$content->requestpath("ext",$path[1]);
-		}
-		else{
-			$content->requestPath();
-		}
+	$direction = new Direction();
+	$path = $content->getpath();
+	$array = array(
+		"boyisadmin" => "travel_admin",
+		"js" => "travel_component",
+		"css" => "travel_component"
+	);
+	if(count($path) > 0 && isset($array[$path[0]])){
+		$direction->$array[$path[0]]($content, $path);
 	}
 	else{
-		// main page
 		$content->requestPath();
 	}
+	die();
 
 ?>
