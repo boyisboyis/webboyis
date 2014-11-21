@@ -1,6 +1,8 @@
 <?php
 
-	//echo "adminpage";
+	if(!Etc::login() || !Etc::loginadmin()){
+		echo "test";
+	}
 
 ?>
 
@@ -9,5 +11,7 @@
 	<head>
 		<title>Admin Page:BoyI's</title>
 	</head>
-	<body></body>
+	<body>
+		
+	</body>
 </html>
