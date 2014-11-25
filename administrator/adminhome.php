@@ -1,5 +1,5 @@
 <?php
-
+	
 	if(!Etc::login() || !Etc::loginadmin()){
 		echo "test";
 	}
