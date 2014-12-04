@@ -1,11 +1,15 @@
+$head-label-top-color : #8bc34a;
+$head-label-init-color : #E0E0E0;
+
 body{
 	font-family: roboto;
 	margin:0;
 	padding:0;
 }
+
 #wrapper{
 	width: 480px;
-	height: 200px;
+	/*height: 200px;*/
 	/*margin: 0 auto;*/
 	border: 1px solid black;
 	border-radius: 5px;
@@ -23,19 +27,136 @@ body{
 .input-group{
 	padding: 0 20px;
 	position: relative;
+	margin-bottom: 20px;
 	input{
 		border: none;
-		border-bottom: 2px solid black;
+		border-bottom: 1px solid black;
 		width: 100%;
 		height: 36px;
-		font-size: 26px;
+		font-size: 20px;
 		outline: none;
 	}
 	input:-webkit-autofill {
 	    color: #fff !important;
 	}
-	label{
+	.animate{
 		position: absolute;
-		top: 5px;
+		left: 20px;
+		top: 6px;
+		color: #E0E0E0;
 	}
+	.animate.enter{
+		-webkit-animation: animateEnter 1s;
+				animation: animateEnter 1s;
+				top: -10px;
+				font-size: 12px;
+				color: $head-label-top-color;
+	}
+	.animate.leave{
+		-webkit-animation: animateLeave 1s;
+				animation: animateLeave 1s;
+				top: 6px;
+				font-size: initial;
+				color: $head-label-init-color;
+	}
+	&:first-child{
+		margin-bottom: 20px;
+	}
+	.bottombar{
+		position: relative;
+		top: -3px;
+		width: 0%;
+		display: block;
+		height: 3px;
+		background: red;
+		margin: 0 auto;
+	}
+	.bglight{
+		width: 0%;
+		display: block;
+		height: 25px;
+		background: $head-label-top-color;
+		position: absolute;
+		top: 7px;
+		pointer-events: none;
+		opacity: 0.5;
+		&.enter{
+			-webkit-animation: bglightEnter 1s;
+				animation: bglightEnter 1s;
+				width: 30%;
+		}
+		&.leave{
+			-webkit-animation: bglightLeave 1s;
+				animation: bglightLeave 1s;
+				width: 0%;
+		}
+	}
+
+	
+
+	.bottombar.enter{
+		-webkit-animation: bottomEnter 1s;
+				animation: bottomEnter 1s;
+				width: 100%;
+	}
+	.bottombar.leave{
+		-webkit-animation: bottomLeave 1s;
+				animation: bottomLeave 1s;
+				width: 0%;
+	}
+}
+
+
+@-webkit-keyframes animateEnter{
+	from  {font-size: initial;top: 6px;color: $head-label-init-color;}
+	to {font-size: 12px;top: -10px;color: $head-label-top-color;}
+}
+@keyframes animateEnter{
+	from  {font-size: initial;top: 6px;color: $head-label-init-color;}
+	to {font-size: 12px;top: -10px;color: $head-label-top-color;}
+}
+
+@-webkit-keyframes animateLeave{
+	from {font-size: 12px;top: -10px;color: $head-label-top-color;}
+	to  {font-size: initial;top: 6px;color: $head-label-init-color;}
+}
+@keyframes animateLeave{
+	from {font-size: 12px;top: -10px;color: $head-label-top-color;}
+	to  {font-size: initial;top: 6px;color: $head-label-init-color;}
+}
+
+@-webkit-keyframes bottomEnter{
+	from {width: 0%;}
+	to  {width: 100%;}
+}
+@keyframes bottomEnter{
+	from {width: 0%;}
+	to  {width: 100%;}
+}
+
+@-webkit-keyframes bottomLeave{
+	from {width: 100%;}
+	to  {width: 0%;}
+}
+@keyframes bottomLeave{
+	from {width: 100%;}
+	to  {width: 0%;}
+}
+
+@-webkit-keyframes bglightEnter{
+	from {width: 0%;}
+	to  {width: 30%;}
+}
+@keyframes bglightEnter{
+	from {width: 0%;}
+	to  {width: 30%;}
+}
+
+@-webkit-keyframes bglightLeave{
+	from {width: inherit;}
+	to  {width: 0%;}
+}
+@keyframes bglightLeave{
+	from {width: inherit;}
+	to  {width: 0%;}
 }

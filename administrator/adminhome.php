@@ -1,5 +1,7 @@
 <?php
 	
+	print_r($_SESSION);
+	unset($_SESSION["member"],$_SESSION["admin"]);
 	if(!Etc::login() || !Etc::loginadmin()){
 		echo "test";
 	}
