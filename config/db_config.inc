@@ -4,9 +4,9 @@
 	// $db_name = 'boyisnak_boyis';	
 	// $db_username = 'boyisnak';
 	// $db_password = '123261129';
-	$host = "sql4.freemysqlhosting.net";
-	$db_name = "sql458767";
-	$db_username = "sql458767";
-	$db_password = "nT4!hL6*";
+	$host = "www.db4free.net";
+	$db_name = "boyisnakub";
+	$db_username = "boyisboyis";
+	$db_password = "123261129";
 
 ?>
