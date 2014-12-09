@@ -76,7 +76,6 @@
 				pstatel : false
 			}
 			$scope.focus = function(res){
-				console.log(this);
 				var i = parseInt(res);
 				if(i == 1){
 					if(typeof $scope.data.username == "undefined" || $scope.data.username == ""){
@@ -99,7 +98,6 @@
 			$scope.blur = function(res){
 				var i = parseInt(res);
 				if(i==1){
-					console.log($scope.data.username)
 					if(typeof $scope.data.username == "undefined" || $scope.data.username == ""){
 						$scope.events.ufocused = false;
 						$scope.events.uleaved = true;
@@ -127,7 +125,6 @@
 						"data" : {username: $scope.data.username, password : $scope.data.password},
 						"headers" : {'Content-Type': 'application/x-www-form-urlencoded'}
 					}).success(function(data,status){
-						console.log(data, status);
 						if(status == 200 && data.status == "success"){
 							$scope.state.check = true;
 							setTimeout(function(){
