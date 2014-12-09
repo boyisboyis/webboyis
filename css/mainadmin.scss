@@ -1,3 +1,5 @@
+@import 'main';
+
 $head-label-top-color : #8bc34a;
 $head-label-init-color : #E0E0E0;
 
@@ -5,22 +7,49 @@ body{
 	font-family: roboto;
 	margin:0;
 	padding:0;
+	background: #f1f8e9;
 }
 
 #wrapper{
+	background: #FFF;
 	width: 480px;
 	/*height: 200px;*/
 	/*margin: 0 auto;*/
-	border: 1px solid black;
+	border: 1px solid #9ccc65;
 	border-radius: 5px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-top: -200px;
 	margin-left: -240px;
+	@include box-shadow(0 0 5px 0px #689f38);
 	#box-login{
 		margin-top: 100px;
 		border:1px solid black;
+	}
+	h1{
+		text-align: center;
+	}
+	button[name="submit"]{
+		width: 100%;
+		border: none;
+		@include border-radius(0 0 5px 5px);
+		/*border-radius: 0 0 5px 5px;*/
+		cursor: pointer;
+		height: 38px;
+		margin-top: 20px;
+		background-color: #8bc34a;
+		font-weight: bold;
+		color: #fff;
+	}
+	#show-state{
+		text-align: center;
+		.error{
+			color: #f44336;
+		}
+		.success{
+			color: #8bc34a;
+		}
 	}
 }
 
@@ -44,6 +73,7 @@ body{
 		left: 20px;
 		top: 6px;
 		color: #E0E0E0;
+		pointer-events: none;
 	}
 	.animate.enter{
 		-webkit-animation: animateEnter 1s;
@@ -153,10 +183,10 @@ body{
 }
 
 @-webkit-keyframes bglightLeave{
-	from {width: inherit;}
+	from {width: 30%;}
 	to  {width: 0%;}
 }
 @keyframes bglightLeave{
-	from {width: inherit;}
+	from {width: 30%;}
 	to  {width: 0%;}
 }

@@ -1,24 +1,70 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: roboto;
+  src: url(/font/roboto/Roboto-Regular.ttf);
+}
+/*
+* Mixins
+*/
 body {
   font-family: roboto;
   margin: 0;
   padding: 0;
+  background: #f1f8e9;
 }
 
 #wrapper {
+  background: #FFF;
   width: 480px;
   /*height: 200px;*/
   /*margin: 0 auto;*/
-  border: 1px solid black;
+  border: 1px solid #9ccc65;
   border-radius: 5px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -200px;
   margin-left: -240px;
+  -webkit-box-shadow: 0 0 5px 0px #689f38;
+  -moz-box-shadow: 0 0 5px 0px #689f38;
+  -ms-box-shadow: 0 0 5px 0px #689f38;
+  box-shadow: 0 0 5px 0px #689f38;
 }
 #wrapper #box-login {
   margin-top: 100px;
   border: 1px solid black;
+}
+#wrapper h1 {
+  text-align: center;
+}
+#wrapper button[name="submit"] {
+  width: 100%;
+  border: none;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  /*border-radius: 0 0 5px 5px;*/
+  cursor: pointer;
+  height: 38px;
+  margin-top: 20px;
+  background-color: #8bc34a;
+  font-weight: bold;
+  color: #fff;
+}
+#wrapper #show-state {
+  text-align: center;
+}
+#wrapper #show-state .error {
+  color: #f44336;
+}
+#wrapper #show-state .success {
+  color: #8bc34a;
 }
 
 .input-group {
@@ -42,6 +88,7 @@ body {
   left: 20px;
   top: 6px;
   color: #E0E0E0;
+  pointer-events: none;
 }
 .input-group .animate.enter {
   -webkit-animation: animateEnter 1s;
@@ -208,7 +255,7 @@ body {
 }
 @-webkit-keyframes bglightLeave {
   from {
-    width: inherit;
+    width: 30%;
   }
 
   to {
@@ -217,7 +264,7 @@ body {
 }
 @keyframes bglightLeave {
   from {
-    width: inherit;
+    width: 30%;
   }
 
   to {
