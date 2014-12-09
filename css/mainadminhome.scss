@@ -1,0 +1,59 @@
+@import 'main';
+
+body{
+	margin: 0;
+	padding: 0;
+}
+
+#wrap-left{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 240px;
+	height: 100%;
+	border-right: 1px solid black;
+	#button-small{
+		border: 1px solid red;
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+		display: none;
+		position: absolute;
+		top: 5px;
+		left: 245px;
+	}
+}
+
+#wrap-right{
+	float: right;
+	padding-left: 240px;
+	width: 100%;
+	#right-header{
+		height: 256px;
+		width: 100%;
+		border-bottom: 1px solid black;
+	}
+}
+
+@media all and (max-width: 960px){
+	#wrap-left{
+		-webkit-animation: navLeave 1s;
+				animation: navLeave 1s;
+				left: -240px;
+		#button-small{
+			display: block;
+		}
+	}
+	#wrap-right{
+		padding-left: 0px;
+	}
+}
+
+@-webkit-keyframes navLeave{
+	from  {left: 0;}
+	to {left: -240px;}
+}
+@keyframes navLeave{
+	from  {left: 0;}
+	to {left: -240px;}
+}
