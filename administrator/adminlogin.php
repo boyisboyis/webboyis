@@ -20,7 +20,7 @@
 	<body data-ng-controller='loginController as data' data-ng-init="state.checkerror=false;state.check=false">
 		<div id='wrapper'>
 			<div>
-				<h1>Login</h1>
+				<h1>LOGIN</h1>
 			</div>
 			<div>
 				<form name="loginForm" autocomplete="off"  novalidate>
