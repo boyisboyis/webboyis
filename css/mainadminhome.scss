@@ -6,12 +6,13 @@ body{
 }
 
 #wrap-left{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 240px;
 	height: 100%;
 	border-right: 1px solid black;
+	overflow: hidden;
 	#button-small{
 		border: 1px solid red;
 		width: 100px;
@@ -21,6 +22,16 @@ body{
 		position: absolute;
 		top: 5px;
 		left: 245px;
+	}
+	#logo{
+		height: 150px;
+		width: 100%;
+		border-bottom: 1px solid black;
+	}
+	#nav{
+		height: 100%;
+		width: 100%;
+		overflow: auto;
 	}
 }
 
@@ -32,6 +43,16 @@ body{
 		height: 256px;
 		width: 100%;
 		border-bottom: 1px solid black;
+		&.scroll-active{
+			height: 150px;
+			position: fixed;
+			top: 0;
+		}
+	}
+	#right-content{
+		&.scroll-active{
+			margin-top: 253px;
+		}
 	}
 }
 

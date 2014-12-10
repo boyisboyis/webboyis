@@ -33,8 +33,14 @@
 			$path_ext = array(
 				"angular" => "js/ext/angular.min.js"
 			);
+			$path_js = array(
+				"adminhome" => "js/min/adminhome.min.js"
+			);
 			if($path == "ext" && isset($path_ext[$file])){
 				echo file_get_contents($path_ext[$file]);
+			}
+			else if($path == "min" && isset($path_js[$file])){
+				echo file_get_contents($path_js[$file]);
 			}
 			else if($path!="" && isset($path_path[$path])){
 				require_once $path_path[$path];

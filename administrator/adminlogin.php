@@ -25,7 +25,7 @@
 			<div>
 				<form name="loginForm" autocomplete="off"  novalidate>
 					<div class="input-group">
-						<input data-ng-focus="focus(1)" data-ng-blur="blur(1)" type="text" name="username" data-ng-model="data.username" required="required" autocomplete="off">
+						<input id="username" data-ng-focus="focus(1)" data-ng-blur="blur(1)" type="text" name="username"  data-ng-model="data.username" required="required" autocomplete="off">
 						<span class="bglight" data-ng-class="{enter: events.ustatee, leave: events.ustatel}"></span>
 						<span class="bottombar" data-ng-class="{enter: events.ustatee, leave: events.ustatel}"></span>
 						<label class="animate" data-ng-class="{enter: events.ufocused, leave: events.uleaved}">Username</label>
@@ -74,6 +74,14 @@
 				pleaved : false,
 				pstatee : false,
 				pstatel : false
+			}
+			if(typeof $scope.data.username == "undefined" || $scope.data.username == ""){
+				$scope.events.ufocused = true;
+				$scope.events.uleaved = false;
+			}
+			if(typeof $scope.data.password == "undefined" || $scope.data.password == ""){
+				$scope.events.pfocused = true;
+				$scope.events.pleaved = false;
 			}
 			$scope.focus = function(res){
 				var i = parseInt(res);

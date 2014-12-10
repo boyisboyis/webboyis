@@ -25,7 +25,10 @@
 		}
 
 		public function travel_component($controller, $path){
-			
+			//echo $controller;
+			if(isset($path[0]) && $path[0] == "js"){
+				$controller->requestPath($path[1], $path[2]);
+			}
 		}
 
 	}
