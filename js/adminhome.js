@@ -1,30 +1,34 @@
 //var loginApp = angular.module('loginApp', []);
 //loginApp.controller('loginController', function($scope, $http){
-var appadmin = angular.module('appAdminHome', []);
-appadmin.controller('adminController', function($scope, $http, $location, $anchorScroll){
-	console.log($anchorScroll);
-	$anchorScroll();
-});
+var appadmin = angular.module('appAdminHome', ['ngRoute', 'ngAnimate']);
 
-appadmin.run(['$anchorScroll', function($anchorScroll){
-	$anchorScroll.yOffset = 50;
+appadmin.config(['$routeProvider', function($routeProvider){
+	 $routeProvider.when('/boyisadmin/user/',{
+	 	templateUrl: '/boyisadmin/test.html',
+	 	controller : 'UserCtrl'
+	 })
 }]);
 
-appadmin.directive('scroll', function($timeout) {
-	return{
-		link: function(scope, element, attr){
-			$timeout(function(){
-				console.log("test")
-			});
-		}
+/*appadmin.controller('UserCtrl', function($scope){
+	$scope.ttt = "test";
+});
+*/
+appadmin.controller('adminController', function($scope, $http){
+	$scope.model ={
+		test : false
 	}
 });
 
+
+
+checkHeaderHeight(window);
 window.addEventListener("scroll", function(){
-	console.log(this.scrollY)
-	if(parseInt(this.scrollY) >= 106){
-		console.log("access");
-		//#right-header
+	checkHeaderHeight(this);
+});
+
+
+function checkHeaderHeight(t){
+	if(parseInt(t.scrollY) >= 155){
 		document.getElementById("right-header").setAttribute("class", "scroll-active");
 		document.getElementById("right-content").setAttribute("class", "scroll-active");
 	}
@@ -32,5 +36,5 @@ window.addEventListener("scroll", function(){
 		document.getElementById("right-header").removeAttribute("class");
 		document.getElementById("right-content").removeAttribute("class");
 	}
-});
+}
 

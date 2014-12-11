@@ -5,6 +5,7 @@
 	}
 	$html = new Html();
 	$basepath = Path::getbasepath();
+	$lastpath = Path::getlastpage();
 
 ?>
 
@@ -22,12 +23,26 @@
 				<div id="button-small">a</div>
 				<div id="logo"></div>
 				<div id="nav">
-					<div></div>
+					<div>
+						<ol class="group-nav">
+							<li>
+								<a href="#user" data-ng-click="view.user = !view.user">User</a>
+								<ol class="child-nav" data-ng-class="{enter:view.user,leave:!view.user}">
+									<li><a href="/boyisadmin/user/list/">List</a></li>
+									<li><a href="/boyisadmin/user/add/">Add</a></li>
+								</ol>
+							</li>
+							<li><a href="/boyisadmin/addtopic">Add Topic</a></li>
+						</ol>
+					</div>
 				</div>
 			</div>
 			<div id="wrap-right">
 				<div id="right-header"></div>
 				<div id="right-content">
+					<div class="view-animate-container">
+					    <div ng-view class="view-animate"></div>
+					  </div>
 					<span>aaaaa</span><br/><br/><br/>
 					<span>aaaaa</span><br/><br/><br/>
 					<span>aaaaa</span><br/><br/><br/>

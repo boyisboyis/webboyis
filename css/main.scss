@@ -28,3 +28,10 @@
       -ms-box-shadow: $element;
           box-shadow: $element;
 }
+
+@mixin transition($element){
+  -webkit-transition: $element;
+    -moz-transition: $element;
+      -o-transition: $element;
+        transition: $element;
+}

@@ -1,8 +1,11 @@
 @import 'main';
 
+$border-all-color: #e0e0e0;
+
 body{
 	margin: 0;
 	padding: 0;
+	font-family: Roboto;
 }
 
 #wrap-left{
@@ -11,7 +14,8 @@ body{
 	left: 0;
 	width: 240px;
 	height: 100%;
-	border-right: 1px solid black;
+	border-right: 1px solid $border-all-color;
+	/*@include box-shadow(0px 0px 1px 0px #bdbdbd);*/
 	overflow: hidden;
 	#button-small{
 		border: 1px solid red;
@@ -24,32 +28,83 @@ body{
 		left: 245px;
 	}
 	#logo{
-		height: 150px;
+		height: 100px;
 		width: 100%;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid $border-all-color;
 	}
 	#nav{
 		height: 100%;
 		width: 100%;
 		overflow: auto;
+		&>div{
+			padding: 12px;
+		}
 	}
 }
+
+.child-nav{
+	/* background-color: pink; */
+	/*display: none;*/
+	a{
+		font-style: 80%;
+		color: #bdbdbd!important;
+	}
+	&.enter, &.leave{
+		max-height: 0;            
+        overflow-y: hidden;
+        @include transition(max-height 0.5s ease-in-out);
+	}
+	&.enter{
+		max-height: 200px; 
+		@include transition(max-height 0.5s ease-in-out);
+	}
+	/* &.leave{
+		overflow-y: hidden;
+		max-height: 500px; approximate max height
+		max-height: 0;
+		transition-property: all;
+		transition-duration: .5s;
+		transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+		-webkit-animation: navLinkLeave 1s;
+				animation: navLinkLeave 1s;
+				height: 0;
+				overflow: hidden;
+	} */
+}
+
+.group-nav{
+	padding: 0;
+	li{
+		list-style: none;
+		a{
+			text-decoration: none;
+			width: 100%;
+			display: block;
+			padding: 5px 0;
+			font-weight: bold;
+			color: #000;
+		}
+	}
+}
+
 
 #wrap-right{
 	float: right;
 	padding-left: 240px;
 	width: 100%;
 	#right-header{
+		/*background-color: #cddc39;*/
 		height: 256px;
 		width: 100%;
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid $border-all-color;
 		&.scroll-active{
-			height: 150px;
+			height: 100px;
 			position: fixed;
 			top: 0;
 		}
 	}
 	#right-content{
+		background-color: #eeeeee;
 		&.scroll-active{
 			margin-top: 253px;
 		}
@@ -77,4 +132,14 @@ body{
 @keyframes navLeave{
 	from  {left: 0;}
 	to {left: -240px;}
+}
+
+@-webkit-keyframes navLinkLeave{
+	from {height: 100%;}
+	to {height: 0%;}
+}
+
+@keyframes navLinkLeave{
+	from {height: 100%;}
+	to {height: 0%;}
 }

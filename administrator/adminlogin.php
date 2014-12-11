@@ -75,11 +75,11 @@
 				pstatee : false,
 				pstatel : false
 			}
-			if(typeof $scope.data.username == "undefined" || $scope.data.username == ""){
+			if($scope.data.username != ""){
 				$scope.events.ufocused = true;
 				$scope.events.uleaved = false;
 			}
-			if(typeof $scope.data.password == "undefined" || $scope.data.password == ""){
+			if($scope.data.password != ""){
 				$scope.events.pfocused = true;
 				$scope.events.pleaved = false;
 			}

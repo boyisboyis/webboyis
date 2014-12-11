@@ -19,6 +19,12 @@
 			return $arr;
 		}
 
+		public function getlastpage(){
+			$a = self::getpath();
+			if(count($a) <= 0) return "";
+			return $a[count($a) - 1];
+		}
+
 		public function getbasepath(){
 			$http = isset($_SERVER['HTTPS'])?"https://":"http://";
 			return $http.$_SERVER["HTTP_HOST"];
