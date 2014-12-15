@@ -25,7 +25,7 @@
 			<div>
 				<form name="loginForm" autocomplete="off"  novalidate>
 					<div class="input-group">
-						<input id="username" data-ng-focus="focus(1)" data-ng-blur="blur(1)" type="text" name="username"  data-ng-model="data.username" required="required" autocomplete="off">
+						<input id="username" data-ng-focus="focus(1)" data-ng-blur="blur(1)" type="text" name="username" data-ng-model="data.username" required>
 						<span class="bglight" data-ng-class="{enter: events.ustatee, leave: events.ustatel}"></span>
 						<span class="bottombar" data-ng-class="{enter: events.ustatee, leave: events.ustatel}"></span>
 						<label class="animate" data-ng-class="{enter: events.ufocused, leave: events.uleaved}">Username</label>
@@ -75,13 +75,23 @@
 				pstatee : false,
 				pstatel : false
 			}
-			if($scope.data.username != ""){
-				$scope.events.ufocused = true;
-				$scope.events.uleaved = false;
-			}
-			if($scope.data.password != ""){
+			setTimeout(function(){
+				if($scope.data.username != ""){
+					$scope.events.ufocused = true;
+					$scope.events.uleaved = false;
+				}
+				if($scope.data.password != ""){
+					$scope.events.pfocused = true;
+					$scope.events.pleaved = false;
+				}
+			},10)
+			/*if($scope.data.username == ""){
+				$scope.events.ufocused = false;
+				$scope.events.uleaved = true;
+			}*/
+			if($scope.data.password == ""){
 				$scope.events.pfocused = true;
-				$scope.events.pleaved = false;
+				$scope.events.pleaved = true;
 			}
 			$scope.focus = function(res){
 				var i = parseInt(res);
@@ -109,6 +119,10 @@
 					if(typeof $scope.data.username == "undefined" || $scope.data.username == ""){
 						$scope.events.ufocused = false;
 						$scope.events.uleaved = true;
+					}
+					if(typeof $scope.data.password == "undefined" || $scope.data.password == ""){
+						$scope.events.pfocused = false;
+						$scope.events.pleaved = true;
 					}
 					$scope.events.ustatel = true;
 					$scope.events.ustatee = false;

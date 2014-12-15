@@ -82,6 +82,7 @@ body {
 }
 .input-group input:-webkit-autofill {
   color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 .input-group .animate {
   position: absolute;
